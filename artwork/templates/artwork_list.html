@@ -1,10 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}Artwork List{% endblock %}
+{% block title %}Artwork Gallery{% endblock %}
 
 {% block content %}
-<h1>All Artwork</h1>
-{% for artwork in object_list %}
-    <div>{{ artwork.title }}</div>
-{% endfor %}
+<h1>Explore DreamScapes</h1>
+
+<div class="artwork-gallery">
+    {% for artwork in object_list %}
+        <div class="artwork-item">
+            <a href="{% url 'artwork-detail' artwork.slug %}">
+                <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+            </a>
+            <h2>{{ artwork.title }}</h2>
+            <p>{{ artwork.description|truncatewords:20 }}</p>
+            <p><strong>Price:</strong> £{{ artwork.price }}</p>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

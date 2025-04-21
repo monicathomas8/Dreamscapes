@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Artwork Detail{% endblock %}
+{% block title %}{{ artwork.title }}{% endblock %}
 
 {% block content %}
-<h1>Artwork</h1>
-{% for artwork in object_list %}
-    <div>{{ artwork.title }}</div>
-{% endfor %}
+<h1>{{ artwork.title }}</h1>
+<img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+<p><strong>Description:</strong> {{ artwork.description }}</p>
+<p><strong>Keywords:</strong> {{ artwork.keywords }}</p>
+<p><strong>Price:</strong> £{{ artwork.price }}</p>
 {% endblock %}
