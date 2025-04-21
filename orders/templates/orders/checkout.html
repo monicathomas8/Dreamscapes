@@ -24,14 +24,36 @@
 
     <p><strong>Total:</strong> £{{ total_price }}</p>
 
-    <form method="POST">
-        {% csrf_token %}
-        <label for="card-number">Card Number:</label>
-        <input type="text" id="card-number" name="card-number" required>
-        <label for="expiry-date">Expiry Date:</label>
-        <input type="text" id="expiry-date" name="expiry-date" required>
-        <label for="cvv">CVV:</label>
-        <input type="text" id="cvv" name="cvv" required>
+    <form id="payment-form">
+        <div id="card-element"></div> <!-- Stripe's card input field -->
         <button type="submit" class="btn btn-success">Pay Now</button>
     </form>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        // Initialize Stripe
+        var stripe = Stripe("{{ stripe_public_key }}");
+        var elements = stripe.elements();
+
+        // Create the card element
+        var cardElement = elements.create("card");
+        cardElement.mount("#card-element");
+
+        // Handle form submission
+        document.querySelector("#payment-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            stripe.confirmCardPayment("{{ client_secret }}", {
+                payment_method: { card: cardElement }
+            }).then(function(result) {
+                if (result.error) {
+                    // Display error message
+                    alert(result.error.message);
+                } else {
+                    // Redirect to a success page
+                    window.location.href = "/thank-you/";
+                }
+            });
+        });
+    </script>
 {% endblock %}

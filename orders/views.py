@@ -1,9 +1,14 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import (
+    render, redirect, get_object_or_404
+)
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from artwork.models import Artwork
 from .models import Order, OrderItem
 from django.contrib import messages
+from django.conf import settings
+
+import stripe
 
 
 @login_required
@@ -26,21 +31,27 @@ def cart_view(request):
 
 @login_required
 def checkout(request):
+    stripe.api_key = settings.STRIPE_SECRET_KEY
     """Processes checkout and creates an order."""
-    cart = request.session.get('cart', {})
 
+    cart = request.session.get('cart', {})
     if not cart:
         return redirect('cart-view')
 
+    total_price = sum(float(item['price']) for item in cart.values()) * 100
 
-    total_price=sum(float(item['price']) for item in cart.values())
+    payment_intent = stripe.PaymentIntent.create(
+        amount=int(total_price),
+        currency='gbp',
+    )
 
     if request.method == 'POST':
         order = Order.objects.create(
             user=request.user,
-            total_price=total_price,
+            total_price=total_price / 100,
+
             status='Pending',
-            )
+        )
         for artwork_id, item in cart.items():
             artwork = get_object_or_404(Artwork, id=artwork_id)
             OrderItem.objects.create(
@@ -54,7 +65,14 @@ def checkout(request):
         request.session.modified = True
 
         return redirect('order-list')
-    return render(request, 'orders/checkout.html', {'cart': cart, 'total_price': total_price})
+    
+    context = {
+        'cart': cart,
+        'total_price': total_price / 100,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'client_secret': payment_intent.client_secret,
+    }
+    return render(request, 'orders/checkout.html', context)
 
 
 
