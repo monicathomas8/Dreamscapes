@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'artwork',  # Custom app for artwork management
+    'orders',
 ]
 
 MIDDLEWARE = [
