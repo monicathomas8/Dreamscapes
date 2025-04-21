@@ -28,7 +28,7 @@ class ArtworkDetailView(DetailView):
 
 # --- Add to cart ---
 
-@login_required
+
 def add_to_cart(request, artwork_id):
     """
     Add artwork to

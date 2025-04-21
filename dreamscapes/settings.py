@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 import dj_database_url
 if os.path.isfile('env.py'):
-    import env 
+    import env
 
 from pathlib import Path
 
@@ -47,9 +47,29 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'artwork',  # Custom app for artwork management
     'orders',
 ]
+
+SITE_ID = 1
+
+# Authentication backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# Redirect URLs
+LOGIN_REDIRECT_URL = '/'  # Redirect to homepage after login
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'  # Redirect to homepage after logout
+
+# Allauth settings
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_LOGIN_METHODS = {'email'}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +79,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Middleware for allauth
     'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise middleware for static files
 ]
 
