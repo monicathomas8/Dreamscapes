@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Artwork Detail{% endblock %}
+
+{% block content %}
+<h1>Artwork</h1>
+{% for artwork in object_list %}
+    <div>{{ artwork.title }}</div>
+{% endfor %}
+{% endblock %}
