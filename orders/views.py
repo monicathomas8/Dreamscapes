@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .models import Order
@@ -30,14 +30,12 @@ def checkout(request):
     if not cart:
         return redirect('cart-view')
 
-    # Create an order for the user
     order = Order.objects.create(
         user=request.user,
         total_price=sum(float(item['price']) for item in cart.values()),
         status='Pending',
         )
 
-    # Convert cart items into order items
     for artwork_id, item in cart.items():
         artwork = get_object_or_404(Artwork, id=artwork_id)
         OrderItem.objects.create(
@@ -47,7 +45,6 @@ def checkout(request):
             quantity=1,
             )
 
-    # Clear the cart after checkout
     request.session['cart'] = {}
     request.session.modified = True
 
@@ -62,8 +59,8 @@ def remove_from_cart(request, artwork_id):
     """
     cart = request.session.get('cart', {})
 
-    if artwork_id in cart:
-        del cart[artwork_id]  
+    if str(artwork_id) in cart:
+        del cart[str(artwork_id)]  
 
     request.session['cart'] = cart  
     request.session.modified = True  
