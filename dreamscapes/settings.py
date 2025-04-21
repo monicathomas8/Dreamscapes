@@ -69,7 +69,8 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'  # Redirect to homepage after logout
 # Allauth settings
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
 ACCOUNT_LOGIN_METHODS = {'email'}
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+
 
 
 MIDDLEWARE = [
