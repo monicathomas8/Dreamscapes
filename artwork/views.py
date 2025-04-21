@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.views.generic import ListView, DetailView
 from .models import Artwork
 
@@ -36,11 +37,16 @@ def add_to_cart(request, artwork_id):
     """
     artwork = get_object_or_404(Artwork, id=artwork_id)
     cart = request.session.get('cart', {})
-    cart[artwork_id] = {
-        'title': artwork.title,
-        'price': str(artwork.price),
-        'image': artwork.image.url,
-    }
+
+    if str(artwork_id) not in cart:
+        cart[artwork_id] = {
+            'title': artwork.title,
+            'price': str(artwork.price),
+            'image': artwork.image.url,
+        }
+        messages.success(request, f"{artwork.title} has been added to your cart.")
+    else:
+        messages.warning(request, f"{artwork.title} is already in your cart.")
 
     request.session['cart'] = cart
     request.session.modified = True

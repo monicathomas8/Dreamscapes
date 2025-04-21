@@ -66,7 +66,8 @@ def remove_from_cart(request, artwork_id):
     cart = request.session.get('cart', {})
 
     if str(artwork_id) in cart:
-        del cart[str(artwork_id)]  
+        del cart[str(artwork_id)]
+        messages.success(request, "Artwork removed from cart.")
 
     request.session['cart'] = cart  
     request.session.modified = True  

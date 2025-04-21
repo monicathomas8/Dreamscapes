@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}DreamScapes{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="">
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <nav class="navbar">
+        <div class="container">
+            <a href="" class="navbar-brand">DreamScapes</a>
+            <ul class="navbar-links">
+                {% if user.is_authenticated %}
+                    <li><a href="">My Orders</a></li>
+                    <li><a href="">Logout</a></li>
+                {% else %}
+                    <li><a href="">Login</a></li>
+                    <li><a href="">Sign Up</a></li>
+                {% endif %}
+                <li><a href="">Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src=""></script>
 </body>
 </html>
