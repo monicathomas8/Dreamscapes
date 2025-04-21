@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from orders.views import thank_you
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('artwork/', include('artwork.urls')),
     path('orders/', include('orders.urls')),
+    path('thank-you/', thank_you, name='thank_you'),
 ]
 
 if settings.DEBUG:

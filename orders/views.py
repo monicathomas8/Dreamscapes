@@ -64,7 +64,7 @@ def checkout(request):
         request.session['cart'] = {}
         request.session.modified = True
 
-        return redirect('order-list')
+        return redirect('thank-you')
     
     context = {
         'cart': cart,
@@ -74,6 +74,9 @@ def checkout(request):
     }
     return render(request, 'orders/checkout.html', context)
 
+
+def thank_you(request):
+    return render(request, 'orders/thank_you.html')
 
 
 def remove_from_cart(request, artwork_id):
