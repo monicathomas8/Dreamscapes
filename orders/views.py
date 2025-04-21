@@ -18,7 +18,8 @@ def order_list(request):
 def cart_view(request):
     """Displays the cart contents."""
     cart = request.session.get('cart', {})
-    return render(request, 'orders/cart.html', {'cart': cart})
+    total_price = sum(float(item['price']) for item in cart.values())
+    return render(request, 'orders/cart.html', {'cart': cart, 'total_price': total_price})
 
 
 @login_required
@@ -51,3 +52,20 @@ def checkout(request):
     request.session.modified = True
 
     return redirect('order-list')
+
+
+@login_required
+def remove_from_cart(request, artwork_id):
+    """
+    Removes an artwork from
+    the session-based cart.
+    """
+    cart = request.session.get('cart', {})
+
+    if artwork_id in cart:
+        del cart[artwork_id]  
+
+    request.session['cart'] = cart  
+    request.session.modified = True  
+
+    return redirect('cart-view')  
