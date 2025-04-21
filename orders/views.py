@@ -7,6 +7,7 @@ from artwork.models import Artwork
 from .models import Order, OrderItem
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import send_mail
 
 import stripe
 
@@ -49,9 +50,9 @@ def checkout(request):
         order = Order.objects.create(
             user=request.user,
             total_price=total_price / 100,
-
             status='Pending',
         )
+
         for artwork_id, item in cart.items():
             artwork = get_object_or_404(Artwork, id=artwork_id)
             OrderItem.objects.create(
@@ -59,8 +60,16 @@ def checkout(request):
                 artwork=artwork,
                 price=float(item['price']),
                 quantity=1,
-                )
+            )
 
+        # Send confirmation email
+        send_mail(
+            subject='Order Confirmation - DreamScapes',
+            message=f'Hi {request.user.username}, \n\nThank you for your order! Your order ID is {order.id}.',
+            from_email=os.getenv('EMAIL_HOST_USER'),
+            recipient_list=[request.user.email],
+            fail_silently=False,
+        )
         request.session['cart'] = {}
         request.session.modified = True
 
