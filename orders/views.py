@@ -2,7 +2,6 @@ from django.shortcuts import (
     render, redirect, get_object_or_404
 )
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
 from artwork.models import Artwork
 from .models import Order, OrderItem
 from django.contrib import messages
@@ -26,6 +25,10 @@ def order_list(request):
 def cart_view(request):
     """Displays the cart contents."""
     cart = request.session.get('cart', {})
+    if not cart:
+        request.session['cart'] = {}
+        request.session.modified = True
+    
     total_price = sum(float(item['price']) for item in cart.values())
     return render(request, 'orders/cart.html', {'cart': cart, 'total_price': total_price})
 
