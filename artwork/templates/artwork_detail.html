@@ -3,17 +3,30 @@
 {% block title %}{{ artwork.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ artwork.title }}</h1>
-<a href="javascript:history.back()" class="btn">← Go Back</a>
-<img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
-<p><strong>Description:</strong> {{ artwork.description }}</p>
-<p><strong>Keywords:</strong> {{ artwork.keywords }}</p>
-<p><strong>Theme:</strong> {{ artwork.theme }}</p>
-<p><strong>Style:</strong> {{ artwork.style }}</p>
-<p><strong>Price:</strong> £{{ artwork.price }}</p>
+<div class="container mt-5">
+    <a href="javascript:history.back()" class="btn btn-secondary mb-3">← Go Back</a>
 
-<form action="{% url 'add-to-cart' artwork.id %}" method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn">Add to Cart</button>
-</form>
+    <div class="row">
+        <!-- Artwork Image -->
+        <div class="col-md-6">
+            <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}" class="img-fluid rounded">
+        </div>
+
+        <!-- Artwork Details -->
+        <div class="col-md-6">
+            <h1 class="text-primary">{{ artwork.title }}</h1>
+            <p><strong>Description:</strong> {{ artwork.description }}</p>
+            <p><strong>Keywords:</strong> <span class="badge bg-info">{{ artwork.keywords }}</span></p>
+            <p><strong>Theme:</strong> <span class="badge bg-success">{{ artwork.theme }}</span></p>
+            <p><strong>Style:</strong> <span class="badge bg-warning">{{ artwork.style }}</span></p>
+            <p><strong>Price:</strong> <span class="text-danger">£{{ artwork.price }}</span></p>
+
+            <!-- Add to Cart Button -->
+            <form action="{% url 'add-to-cart' artwork.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success btn-lg mt-3">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
