@@ -52,7 +52,7 @@ def checkout(request):
             total_price=total_price / 100,
             status='Pending',
         )
-
+        
         for artwork_id, item in cart.items():
             artwork = get_object_or_404(Artwork, id=artwork_id)
             OrderItem.objects.create(
@@ -62,7 +62,7 @@ def checkout(request):
                 quantity=1,
             )
 
-        # Send confirmation email
+
         send_mail(
             subject='Order Confirmation - DreamScapes',
             message=f'Hi {request.user.username}, \n\nThank you for your order! Your order ID is {order.id}.',
