@@ -6,7 +6,11 @@ class ArtworkAdmin(admin.ModelAdmin):
     """
     Admin interface for Artwork model."""
     prepopulated_fields = {"slug": ("title",)}  # Auto-generate slug in admin
-    fields = ('title', 'slug', 'description', 'image', 'price', 'keywords')
+    fields = (
+        'title', 'slug', 'description', 'image',
+        'price', 'keywords', 'theme', 'style'
+    )
+    list_display = ('title', 'theme', 'style', 'price')
 
 
 admin.site.register(Artwork, ArtworkAdmin)
