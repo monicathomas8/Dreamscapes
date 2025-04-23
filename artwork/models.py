@@ -20,6 +20,31 @@ class Artwork(models.Model):
         blank=False,
         null=False
         )
+    theme = models.CharField(
+        max_length=100,
+        choices=[
+            ('abstract', 'Abstract'),
+            ('landscape', 'Landscape'),
+            ('fantasy', 'Fantasy'),
+            ('travel', 'Travel'),
+            ('nature', 'Nature'),
+        ],
+        default='landscape',
+        blank=False,
+        null=False
+    )
+    style = models.CharField(
+        max_length=100,
+        choices=[
+            ('modern', 'Modern'),
+            ('traditional', 'Traditional'),
+            ('contemporary', 'Contemporary'),
+            ('impressionism', 'Impressionism'),
+        ],
+        default='impressionism',
+        blank=False,
+        null=False
+    )
 
     def save(self, *args, **kwargs):
         if not self.slug:
