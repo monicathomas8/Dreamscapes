@@ -4,19 +4,16 @@ import cloudinary.api
 from decouple import config
 import os
 import dj_database_url
-if os.path.isfile('env.py'):
-    import env
 from pathlib import Path
 
 
-cloudinary.config(
-    cloud_name=config("CLOUDINARY_CLOUD_NAME"),
-    api_key=config("CLOUDINARY_API_KEY"),
-    api_secret=config("CLOUDINARY_API_SECRET"),
-)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY': os.environ.get("CLOUDINARY_API_KEY"),
+    'API_SECRET': os.environ.get("CLOUDINARY_API_SECRET"),
+}
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
@@ -131,12 +128,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-MEDIAFILES_LOCATION = 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
