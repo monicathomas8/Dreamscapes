@@ -8,6 +8,8 @@
 <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
 <p><strong>Description:</strong> {{ artwork.description }}</p>
 <p><strong>Keywords:</strong> {{ artwork.keywords }}</p>
+<p><strong>Theme:</strong> {{ artwork.theme }}</p>
+<p><strong>Style:</strong> {{ artwork.style }}</p>
 <p><strong>Price:</strong> £{{ artwork.price }}</p>
 
 <form action="{% url 'add-to-cart' artwork.id %}" method="post">

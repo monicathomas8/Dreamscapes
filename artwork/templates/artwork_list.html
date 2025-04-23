@@ -8,11 +8,13 @@
 <div class="artwork-gallery">
     {% for artwork in object_list %}
         <div class="artwork-item">
+            <h2>{{ artwork.title }}</h2>
             <a href="{% url 'artwork-detail' artwork.slug %}">
                 <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
             </a>
-            <h2>{{ artwork.title }}</h2>
             <p>{{ artwork.description|truncatewords:20 }}</p>
+            <p><strong>Theme:</strong> {{ artwork.theme }}</p>
+            <p><strong>Style:</strong> {{ artwork.style }}</p>
             <p><strong>Price:</strong> £{{ artwork.price }}</p>
             <a href="{% url 'add-to-cart' artwork.id %}" class="btn">Add to Cart</a>
         </div>
