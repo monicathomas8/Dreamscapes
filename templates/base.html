@@ -12,6 +12,7 @@
             <a href="{% url 'home' %}" class="navbar-brand">DreamScapes</a>
             <ul class="navbar-links">
                 <li><a href="{% url 'artwork-list' %}">Artworks</a></li>
+                <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="">Welcome, {{ user.username }}</a></li>
                     <li><a href="{% url 'account_logout' %}" >Logout</a></li>
