@@ -47,9 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
     'artwork',
     'orders',
 ]
@@ -67,7 +67,7 @@ LOGIN_REDIRECT_URL = '/'  # Redirect to homepage after login
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'  # Redirect to homepage after logout
 
 # Allauth settings
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*', 'first_name', 'last_name']
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
