@@ -6,11 +6,12 @@ import os
 import dj_database_url
 from pathlib import Path
 
-
+CLOUDINARDY_URL = os.environ.get("CLOUDINARY_URL")
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get("CLOUDINARY_CLOUD_NAME"),
     'API_KEY': os.environ.get("CLOUDINARY_API_KEY"),
     'API_SECRET': os.environ.get("CLOUDINARY_API_SECRET"),
+    
 }
 
 BASE_DIR = Path(__file__).resolve().parent.parent
