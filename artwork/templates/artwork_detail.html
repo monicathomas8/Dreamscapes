@@ -4,8 +4,14 @@
 
 {% block content %}
 <h1>{{ artwork.title }}</h1>
+<a href="javascript:history.back()" class="btn">← Go Back</a>
 <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
 <p><strong>Description:</strong> {{ artwork.description }}</p>
 <p><strong>Keywords:</strong> {{ artwork.keywords }}</p>
 <p><strong>Price:</strong> £{{ artwork.price }}</p>
+
+<form action="{% url 'add-to-cart' artwork.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn">Add to Cart</button>
+</form>
 {% endblock %}

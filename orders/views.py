@@ -114,3 +114,25 @@ def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
     return render(request, 'orders/order_detail.html', {'order': order})
 
+
+def add_to_cart(request, artwork_id):
+    """
+    Add artwork to
+    session based cart.
+    """
+    artwork = get_object_or_404(Artwork, id=artwork_id)
+    cart = request.session.get('cart', {})
+
+    if str(artwork_id) not in cart:
+        cart[artwork_id] = {
+            'title': artwork.title,
+            'price': str(artwork.price),
+            'image': artwork.image.url,
+        }
+        messages.success(request, f"{artwork.title} has been added to your cart.")
+    else:
+        messages.warning(request, f"{artwork.title} is already in your cart.")
+
+    request.session['cart'] = cart
+    request.session.modified = True
+    return redirect('cart-view')
