@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from orders.views import thank_you
 
 urlpatterns = [
+    path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('artwork/', include('artwork.urls')),

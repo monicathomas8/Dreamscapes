@@ -9,8 +9,9 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <a href="" class="navbar-brand">DreamScapes</a>
+            <a href="{% url 'home' %}" class="navbar-brand">DreamScapes</a>
             <ul class="navbar-links">
+                <li><a href="{% url 'artwork-list' %}">Artworks</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="">Welcome, {{ user.username }}</a></li>
                     <li><a href="{% url 'account_logout' %}" >Logout</a></li>
@@ -33,7 +34,11 @@
         {% endif %}
         {% block content %}{% endblock %}
     </div>
-
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 DreamScapes. All rights reserved.</p>
+        </div>
+    </footer>
     <script src=""></script>
 </body>
 </html>
