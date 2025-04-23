@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 
 class Artwork(models.Model):
@@ -12,7 +13,7 @@ class Artwork(models.Model):
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     description = models.TextField(blank=False, null=False)
     keywords = models.CharField(max_length=255, blank=False, null=False)
-    image = models.ImageField(upload_to='artwork_images/')
+    image = CloudinaryField('image')
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
