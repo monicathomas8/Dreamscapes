@@ -73,23 +73,30 @@
     </div>
     <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
+            <!-- About Section -->
+            <div class="row mb-3">
+                <div class="col-12">
                     <h5>About DreamScapes</h5>
                     <p>Explore stunning digital landscapes and unique custom art for your collections.</p>
                 </div>
-                <div class="col-md-4">
+            </div>
+            <div class="row">
+                <!-- Quick Links -->
+                <div class="col-md-6 text-start">
                     <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="{% url 'artwork-list' %}" class="text-white">Artworks</a></li>
-                        <li><a href="{% url 'about' %}" class="text-white">About Us</a></li>
-                        <li><a href="{% url 'email-signup' %}" class="text-white">Sign Up</a></li>
-                    </ul>
+                    <div class="d-flex flex-wrap justify-content-start">
+                        <a href="{% url 'artwork-list' %}" class="text-white me-3">Artworks</a>
+                        <a href="{% url 'contact-us' %}" class="text-white me-3">Contact Us</a>
+                        <a href="{% url 'about' %}" class="text-white me-3">About Us</a>
+                        <a href="{% url 'email-signup' %}" class="text-white me-3">Sign Up</a>
+                    </div>
                 </div>
-                <div class="col-md-4">
+                <!-- Follow Us -->
+                <div class="col-md-6 text-end">
                     <h5>Follow Us</h5>
                     <div>
                         <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i> Facebook</a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter"></i> Twitter</a>
                     </div>
                 </div>
             </div>
