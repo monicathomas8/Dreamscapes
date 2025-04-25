@@ -2,6 +2,9 @@
 
 {% block content %}
 <h1>About Us</h1>
+{% if user.is_authenticated %}
+    <a href="{% url 'update-bio' %}" class="btn btn-primary">Edit Your Bio</a>
+{% endif %}
 <p>Welcome to DreamScapes! Our mission is to bring dream-like landscapes and landmarks to life through digital art.</p>
 <p>Feel free to explore our collection, and if you have any questions, don't hesitate to <a href="{% url 'contact-us' %}">Contact Us</a>.</p>
 
