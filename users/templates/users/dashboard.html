@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Your Dashboard</h1>
+
+    <!-- Past Cart Orders -->
+    <h2 class="mt-4">Past Orders</h2>
+    {% if past_cart_orders %}
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Purchased On</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in past_cart_orders %}
+            <tr>
+                <td>#{{ order.id }}</td>
+                <td>£{{ order.total_price }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.created_at|date:"d M Y" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No past orders found.</p>
+    {% endif %}
+
+    <!-- Custom Orders -->
+    <h2 class="mt-4">Custom Orders</h2>
+    {% if custom_orders %}
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Size</th>
+                <th>Theme</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in custom_orders %}
+            <tr>
+                <td>{{ order.description }}</td>
+                <td>{{ order.size }}</td>
+                <td>{{ order.theme }}</td>
+                <td>
+                    <a href="" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No custom orders found.</p>
+    {% endif %}
+</div>
+{% endblock %}

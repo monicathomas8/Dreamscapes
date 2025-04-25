@@ -13,21 +13,22 @@
         <div class="container">
             <a href="{% url 'home' %}" class="navbar-brand">DreamScapes</a>
             <ul class="navbar-links">
-                <li><a href="{% url 'artwork-list' %}">Artworks</a></li>
-                <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
-                <li><a href="{% url 'about' %}">About Us</a></li>
-                <li><a href="{% url 'email-signup' %}">Sign Up for Updates</a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'create-custom-order' %}">Custom Order</a>
+                <li class="nav-link"><a href="{% url 'artwork-list' %}">Artworks</a></li>
+                <li class="nav-link"><a href="{% url 'contact-us' %}">Contact Us</a></li>
+                <li class="nav-link"><a href="{% url 'about' %}">About Us</a></li>
+                <li class="nav-link"><a href="{% url 'email-signup' %}">Sign Up for Updates</a></li>
+                <li class="nav-link"><a href="{% url 'create-custom-order' %}">Custom Order</a>
                 </li>
                 {% if user.is_authenticated %}
-                    <li><a href="">Welcome, {{ user.username }}</a></li>
-                    <li><a href="{% url 'account_logout' %}" >Logout</a></li>
+                    <li class="nav-link"><a href="">Welcome, {{ user.username }}</a></li>
+                    <li class="nav-link"><a href="{% url 'user-dashboard' %}">Your Orders</a>
+                    </li>
+                    <li class="nav-link"><a href="{% url 'account_logout' %}" >Logout</a></li>
                 {% else %}
-                    <li><a href="{% url 'account_login' %}">Login</a></li>
-                    <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                    <li class="nav-link"><a href="{% url 'account_login' %}">Login</a></li>
+                    <li class="nav-link"><a href="{% url 'account_signup' %}">Sign Up</a></li>
                 {% endif %}
-                <li><a href="{% url 'cart-view' %}">Cart</a></li>
+                <li class="nav-link"><a href="{% url 'cart-view' %}">Cart</a></li>
             </ul>
         </div>
     </nav>

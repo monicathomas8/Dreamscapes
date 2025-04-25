@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SignupForm, CustomOrderForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import CustomOrder
+from orders.models import Order
 
 
 def signup(request):
@@ -43,3 +44,20 @@ def create_custom_order(request):
         form = CustomOrderForm()
 
     return render(request, 'users/create_custom_order.html', {'form': form})
+
+
+@login_required
+def user_dashboard(request):
+    """
+    View for users to manage past cart
+    orders and custom orders.
+    Only accessible to logged-in users.
+    """
+    custom_orders = CustomOrder.objects.filter(user=request.user)
+    past_cart_orders = Order.objects.filter(
+        user=request.user, status='completed'
+    )
+    return render(request, 'users/dashboard.html', {
+        'custom_orders': custom_orders,
+        'past_cart_orders': past_cart_orders,
+    })
