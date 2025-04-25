@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'artwork',
     'home',
     'orders',
-    'storages'
+    'storages',
+    'users',
 ]
 
 SITE_ID = 1
