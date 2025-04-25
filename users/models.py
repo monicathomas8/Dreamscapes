@@ -8,6 +8,11 @@ class UserProfile(models.Model):
         on_delete=models.CASCADE,
         related_name='profile'
     )
+    name = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Enter your name"
+    )
     is_artist = models.BooleanField(
         default=False,
         help_text="Check if the user is an artist"
