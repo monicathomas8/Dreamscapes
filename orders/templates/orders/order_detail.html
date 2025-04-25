@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Order Details</h2>
+    <p><strong>Order ID:</strong> {{ order.id }}</p>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+    <p><strong>Total Price:</strong> £{{ order.total_price }}</p>
+
+    <h3>Items in this Order:</h3>
+    <ul>
+        {% for item in order.orderitem_set.all %}
+            <li>{{ item.artwork.title }} - £{{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'user-dashboard' %}" class="btn btn-primary">Back to orders</a>
+{% endblock %}
