@@ -61,3 +61,39 @@ def user_dashboard(request):
         'custom_orders': custom_orders,
         'past_cart_orders': past_cart_orders,
     })
+
+
+@login_required
+def edit_order(request, order_id):
+    """
+    View to edit a custom order.
+    Only accessible to logged-in users.
+    """
+    order = get_object_or_404(CustomOrder, id=order_id, user=request.user)
+
+    if request.method == 'POST':
+        form = CustomOrderForm(request.POST, instance=order)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Custom order updated successfully!')
+            return redirect('user-dashboard')
+    else:
+        form = CustomOrderForm(instance=order)
+
+    return render(request, 'users/edit_order.html', {'form': form})
+
+
+@login_required
+def delete_order(request, order_id):
+    """
+    View to delete a custom order.
+    Only accessible to logged-in users.
+    """
+    order = get_object_or_404(CustomOrder, id=order_id, user=request.user)
+
+    if request.method == 'POST':
+        order.delete()
+        messages.success(request, 'Custom order deleted successfully!')
+        return redirect('user-dashboard')
+
+    return render(request, 'users/delete_order.html', {'order': order})
