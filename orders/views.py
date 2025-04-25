@@ -5,8 +5,9 @@ from django.conf import settings
 import stripe
 from artwork.models import Artwork
 from .models import Order, OrderItem
+from django.core.mail import send_mail
 
-# Set Stripe API Key
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
@@ -102,9 +103,37 @@ def checkout(request):
     return render(request, 'orders/checkout.html', context)
 
 
+@login_required
 def thank_you(request):
-    """Displays the thank-you page after a successful order."""
-    return render(request, 'orders/thank_you.html')
+    """
+    Displays the thank-you page,
+    updates order status,
+    and sends confirmation email.
+    """
+    latest_order = Order.objects.filter(user=request.user) \
+        .order_by('-created_at').first()
+
+    if latest_order and latest_order.status == 'Pending':
+        latest_order.status = 'Completed'
+        latest_order.save()
+
+        send_mail(
+            subject='Order Confirmation - DreamScapes',
+            message=(
+                f"Hi {request.user.username},\n\n"
+                f"Thank you for your order!\n\n"
+                f"Order ID: {latest_order.id}\n"
+                f"Total Price: £{latest_order.total_price}\n\n"
+                "We hope you love your new artwork!"
+            ),
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[request.user.email],
+            fail_silently=False,
+        )
+
+    return render(
+        request, 'orders/thank_you.html', {"latest_order": latest_order}
+    )
 
 
 @login_required
