@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import SignupForm, CustomOrderForm
+from .forms import SignupForm, CustomOrderForm, UserUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import CustomOrder
@@ -55,8 +55,8 @@ def user_dashboard(request):
     """
     custom_orders = CustomOrder.objects.filter(user=request.user)
     past_cart_orders = Order.objects.filter(
-        user=request.user, status='completed'
-    )
+        user=request.user).order_by('-created_at')
+    
     return render(request, 'users/dashboard.html', {
         'custom_orders': custom_orders,
         'past_cart_orders': past_cart_orders,
@@ -97,3 +97,24 @@ def delete_order(request, order_id):
         return redirect('user-dashboard')
 
     return render(request, 'users/delete_order.html', {'order': order})
+
+
+@login_required
+def update_profile(request):
+    """
+    View to update user profile information.
+    Only accessible to logged-in users.
+    """
+    user = request.user
+
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Profile updated successfully!")
+            return redirect('dashboard')
+
+    else:
+        form = UserUpdateForm(instance=user)
+
+    return render(request, 'users/update_profile.html', {'form': form})

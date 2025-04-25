@@ -11,7 +11,7 @@ class SignupForm(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'password']
         widgets = {
-            'password': forms.PasswordInput(),  # Hides password input
+            'password': forms.PasswordInput(),
         }
 
 
@@ -30,3 +30,12 @@ class CustomOrderForm(forms.ModelForm):
             'extra_suggestions',
             'contact_email',
         ]
+
+
+class UserUpdateForm(forms.ModelForm):
+    """
+    Form for updating user profile information.
+    """
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name']

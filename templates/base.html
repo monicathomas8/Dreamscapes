@@ -21,8 +21,8 @@
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-link"><a href="">Welcome, {{ user.username }}</a></li>
-                    <li class="nav-link"><a href="{% url 'user-dashboard' %}">Your Orders</a>
-                    </li>
+                    <li class="nav-link"><a href="{% url 'user-dashboard' %}">Your Orders</a></li>
+                    <li class="nav-link"><a href="{% url 'update_profile' %}" >Update Account Details</a></li>
                     <li class="nav-link"><a href="{% url 'account_logout' %}" >Logout</a></li>
                 {% else %}
                     <li class="nav-link"><a href="{% url 'account_login' %}">Login</a></li>
