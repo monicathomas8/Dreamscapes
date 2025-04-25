@@ -56,7 +56,7 @@ def user_dashboard(request):
     custom_orders = CustomOrder.objects.filter(user=request.user)
     past_cart_orders = Order.objects.filter(
         user=request.user).order_by('-created_at')
-    
+
     return render(request, 'users/dashboard.html', {
         'custom_orders': custom_orders,
         'past_cart_orders': past_cart_orders,

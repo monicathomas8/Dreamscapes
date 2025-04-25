@@ -9,27 +9,55 @@
     
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a href="{% url 'home' %}" class="navbar-brand">DreamScapes</a>
-            <ul class="navbar-links">
-                <li class="nav-link"><a href="{% url 'artwork-list' %}">Artworks</a></li>
-                <li class="nav-link"><a href="{% url 'contact-us' %}">Contact Us</a></li>
-                <li class="nav-link"><a href="{% url 'about' %}">About Us</a></li>
-                <li class="nav-link"><a href="{% url 'email-signup' %}">Sign Up for Updates</a></li>
-                <li class="nav-link"><a href="{% url 'create-custom-order' %}">Custom Order</a>
-                </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-link"><a href="">Welcome, {{ user.username }}</a></li>
-                    <li class="nav-link"><a href="{% url 'user-dashboard' %}">Your Orders</a></li>
-                    <li class="nav-link"><a href="{% url 'update_profile' %}" >Update Account Details</a></li>
-                    <li class="nav-link"><a href="{% url 'account_logout' %}" >Logout</a></li>
-                {% else %}
-                    <li class="nav-link"><a href="{% url 'account_login' %}">Login</a></li>
-                    <li class="nav-link"><a href="{% url 'account_signup' %}">Sign Up</a></li>
-                {% endif %}
-                <li class="nav-link"><a href="{% url 'cart-view' %}">Cart</a></li>
-            </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'artwork-list' %}" class="nav-link">Artworks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'contact-us' %}" class="nav-link">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'about' %}" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'email-signup' %}" class="nav-link">Sign Up for Updates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'create-custom-order' %}" class="nav-link">Custom Order</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Welcome, {{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'user-dashboard' %}" class="nav-link">Your Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'update_profile' %}" class="nav-link">Update Account Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a href="{% url 'cart-view' %}" class="nav-link">Cart</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -43,9 +71,30 @@
         {% endif %}
         {% block content %}{% endblock %}
     </div>
-    <footer class="footer">
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">
-            <p>&copy; 2023 DreamScapes. All rights reserved.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About DreamScapes</h5>
+                    <p>Explore stunning digital landscapes and unique custom art for your collections.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'artwork-list' %}" class="text-white">Artworks</a></li>
+                        <li><a href="{% url 'about' %}" class="text-white">About Us</a></li>
+                        <li><a href="{% url 'email-signup' %}" class="text-white">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div>
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i> Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="text-secondary">
+            <p>&copy; 2025 DreamScapes. All rights reserved.</p>
         </div>
     </footer>
     <script src=""></script>
