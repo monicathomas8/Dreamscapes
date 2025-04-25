@@ -44,7 +44,13 @@ def email_signup(request):
 def update_bio(request):
     """
     Update the artist bio for the logged-in user.
+    Checks if user is marked as an artist.
     """
+    user_profile = request.user.profile
+    if not user_profile.is_artist:
+        messages.error(request, 'You must be an artist to update your bio.')
+        return redirect('home')
+
     bio, created = ArtistBio.objects.get_or_create(user=request.user)
     if request.method == 'POST':
         form = ArtistBioForm(request.POST, request.FILES, instance=bio)
