@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Request a Custom Order</h1>
+    <p class="text-center">Fill out the form below with the details for your artwork request.</p>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="post" class="p-4 border rounded shadow-sm bg-light">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="id_description" class="form-label">Description</label>
+                    {{ form.description }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_size" class="form-label">Size</label>
+                    {{ form.size }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_colours" class="form-label">Preferred Colours</label>
+                    {{ form.colours }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_theme" class="form-label">Theme</label>
+                    {{ form.theme }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_style" class="form-label">Style</label>
+                    {{ form.style }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_extra_suggestions" class="form-label">Extra Suggestions</label>
+                    {{ form.extra_suggestions }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_contact_email" class="form-label">Contact Email</label>
+                    {{ form.contact_email }}
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Submit Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

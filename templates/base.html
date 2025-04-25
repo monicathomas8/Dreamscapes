@@ -17,6 +17,9 @@
                 <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
                 <li><a href="{% url 'about' %}">About Us</a></li>
                 <li><a href="{% url 'email-signup' %}">Sign Up for Updates</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create-custom-order' %}">Custom Order</a>
+                </li>
                 {% if user.is_authenticated %}
                     <li><a href="">Welcome, {{ user.username }}</a></li>
                     <li><a href="{% url 'account_logout' %}" >Logout</a></li>
