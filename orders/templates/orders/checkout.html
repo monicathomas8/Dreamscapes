@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+
 {% block content %}
     <h2>Checkout</h2>
 
@@ -24,36 +25,41 @@
 
     <p><strong>Total:</strong> £{{ total_price }}</p>
 
-    <form id="payment-form">
-        <div id="card-element"></div> <!-- Stripe's card input field -->
-        <button type="submit" class="btn btn-success">Pay Now</button>
+    <form id="payment-form" method="POST" class="p-4 border rounded shadow bg-light">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="card-element" class="form-label">Card Details</label>
+            <input type="text" id="card-input" name="card-input" style="display: none;">
+            <div id="card-element" class="form-control">
+                <!-- Stripe's card input field will be inserted here -->
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Pay Now</button>
     </form>
 
     <script src="https://js.stripe.com/v3/"></script>
-    <script>
-        // Initialize Stripe
-        var stripe = Stripe("{{ stripe_public_key }}");
-        var elements = stripe.elements();
 
-        // Create the card element
-        var cardElement = elements.create("card");
-        cardElement.mount("#card-element");
+<script>
+    var stripe = Stripe("{{ stripe_public_key }}"); // Access public key
+    var elements = stripe.elements();
 
-        // Handle form submission
-        document.querySelector("#payment-form").addEventListener("submit", function(event) {
-            event.preventDefault();
+    // Create the card element
+    var cardElement = elements.create("card");
+    cardElement.mount("#card-element");
 
-            stripe.confirmCardPayment("{{ client_secret }}", {
-                payment_method: { card: cardElement }
-            }).then(function(result) {
-                if (result.error) {
-                    // Display error message
-                    alert(result.error.message);
-                } else {
-                    // Redirect to a success page
-                    window.location.href = "/thank-you/";
-                }
-            });
+    // Handle form submission
+    document.querySelector("#payment-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        stripe.confirmCardPayment("{{ client_secret }}", { // Access client secret
+            payment_method: { card: cardElement }
+        }).then(function(result) {
+            if (result.error) {
+                alert(result.error.message); // Display error
+            } else {
+                document.querySelector("#payment-form").submit(); // Trigger backend submission
+            }
         });
-    </script>
+    });
+</script>
 {% endblock %}

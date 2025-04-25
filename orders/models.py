@@ -18,15 +18,6 @@ class Order(models.Model):
         ],
     )
 
-    def save(self, *args, **kwargs):
-        self.total_price = sum(
-            item.price * item.quantity
-            for item in self.items.all()
-        )
-        if self.total_price <= 0:
-            raise ValueError("Total price must be greater than zero.")
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return f"Order #{self.id} by {self.user.username}"
 
