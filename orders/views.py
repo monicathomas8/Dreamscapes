@@ -6,6 +6,8 @@ import stripe
 from artwork.models import Artwork
 from .models import Order, OrderItem
 from django.core.mail import send_mail
+from django.urls import reverse
+from django.http import FileResponse, Http404
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -66,7 +68,6 @@ def checkout(request):
 
     total_price = sum(float(item['price']) for item in cart.values()) * 100
 
-    # Create PaymentIntent
     payment_intent = stripe.PaymentIntent.create(
         amount=int(total_price),
         currency='gbp',
@@ -105,35 +106,47 @@ def checkout(request):
 
 @login_required
 def thank_you(request):
-    """
-    Displays the thank-you page,
-    updates order status,
-    and sends confirmation email.
-    """
+    """Display the thank-you page with download links."""
     latest_order = Order.objects.filter(user=request.user) \
         .order_by('-created_at').first()
+
+    download_links = []
 
     if latest_order and latest_order.status == 'Pending':
         latest_order.status = 'Completed'
         latest_order.save()
 
+        download_links = [
+            {
+                'title': item.artwork.title,
+                'link': request.build_absolute_uri(
+                    reverse('download-order-item', args=[item.id])
+                )
+            }
+            for item in latest_order.items.all()
+        ]
+
+        message = (
+            f"Hi {request.user.username},\n\n"
+            f"Thank you for your order!\n\n"
+            f"Order ID: {latest_order.id}\n"
+            f"Total Price: £{latest_order.total_price}\n\n"
+            "Download your purchased items here:\n"
+        )
+        for link in download_links:
+            message += f"{link['title']}: {link['link']}\n"
         send_mail(
             subject='Order Confirmation - DreamScapes',
-            message=(
-                f"Hi {request.user.username},\n\n"
-                f"Thank you for your order!\n\n"
-                f"Order ID: {latest_order.id}\n"
-                f"Total Price: £{latest_order.total_price}\n\n"
-                "We hope you love your new artwork!"
-            ),
+            message=message,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[request.user.email],
             fail_silently=False,
         )
 
-    return render(
-        request, 'orders/thank_you.html', {"latest_order": latest_order}
-    )
+    return render(request, 'orders/thank_you.html', {
+        "latest_order": latest_order,
+        "download_links": download_links,
+    })
 
 
 @login_required
@@ -148,3 +161,23 @@ def order_detail(request, order_id):
     """Displays the details of a specific order."""
     order = get_object_or_404(Order, id=order_id, user=request.user)
     return render(request, 'orders/order_detail.html', {'order': order})
+
+
+@login_required
+def download_order_item(request, order_item_id):
+    """
+    serve the fil for the specific order item.
+    Ensures only the order's owner can acess the file.
+    """
+    order_item = get_object_or_404(
+        OrderItem, id=order_item_id, order__user=request.user
+    )
+    try:
+        file_path = order_item.artwork.file.path
+        return FileResponse(
+            open(file_path, 'rb'),
+            as_attachment=True,
+            filename=order_item.artwork.title
+        )
+    except Exception:
+        raise Http404("File not found")

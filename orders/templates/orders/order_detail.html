@@ -12,5 +12,6 @@
             <li>{{ item.artwork.title }} - £{{ item.price }}</li>
         {% endfor %}
     </ul>
+    <hr> 
     <a href="{% url 'user-dashboard' %}" class="btn btn-primary">Back to orders</a>
 {% endblock %}

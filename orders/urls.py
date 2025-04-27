@@ -1,13 +1,33 @@
 from django.urls import path
 from . import views
-from .views import cart_view, checkout, remove_from_cart, order_list, order_detail, add_to_cart
+from .views import (
+    cart_view,
+    checkout,
+    remove_from_cart,
+    order_list,
+    order_detail,
+    download_order_item,
+)
 
 urlpatterns = [
-    path('add-to-cart/<int:artwork_id>/', views.add_to_cart, name='add-to-cart'),
+    path(
+        'add-to-cart/<int:artwork_id>/',
+        views.add_to_cart,
+        name='add-to-cart',
+    ),
     path('cart/', cart_view, name='cart-view'),
     path('checkout/', checkout, name='checkout'),
-    path('cart/remove/<int:artwork_id>/', remove_from_cart, name='remove-from-cart'),
+    path(
+        'cart/remove/<int:artwork_id>/',
+        remove_from_cart,
+        name='remove-from-cart',
+    ),
     path('orders/', order_list, name='order-list'),
     path('orders/<int:order_id>/', order_detail, name='order-detail'),
     path('thank-you/', views.thank_you, name='thank-you'),
+    path(
+        'download/<int:order_item_id>/',
+        download_order_item,
+        name='download-order-item',
+    ),
 ]
