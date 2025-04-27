@@ -110,31 +110,19 @@ def thank_you(request):
     latest_order = Order.objects.filter(user=request.user) \
         .order_by('-created_at').first()
 
-    download_links = []
-
     if latest_order and latest_order.status == 'Pending':
         latest_order.status = 'Completed'
         latest_order.save()
-
-        download_links = [
-            {
-                'title': item.artwork.title,
-                'link': request.build_absolute_uri(
-                    reverse('download-order-item', args=[item.id])
-                )
-            }
-            for item in latest_order.items.all()
-        ]
 
         message = (
             f"Hi {request.user.username},\n\n"
             f"Thank you for your order!\n\n"
             f"Order ID: {latest_order.id}\n"
             f"Total Price: £{latest_order.total_price}\n\n"
-            "Download your purchased items here:\n"
+            "We hope you enjoy your purchase!\n\n"
+            "Best regards,\n"
+            "DreamScapes Team"
         )
-        for link in download_links:
-            message += f"{link['title']}: {link['link']}\n"
         send_mail(
             subject='Order Confirmation - DreamScapes',
             message=message,
@@ -145,7 +133,6 @@ def thank_you(request):
 
     return render(request, 'orders/thank_you.html', {
         "latest_order": latest_order,
-        "download_links": download_links,
     })
 
 

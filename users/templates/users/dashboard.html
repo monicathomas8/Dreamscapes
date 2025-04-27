@@ -33,7 +33,11 @@
         <tbody>
             {% for order in past_cart_orders %}
             <tr>
-                <td>#{{ order.id }}</td>
+                <td>
+                    <a href="{% url 'order-detail' order.id %}">
+                        #{{ order.id }}
+                    </a>
+                </td>
                 <td>£{{ order.total_price }}</td>
                 <td>{{ order.status }}</td>
                 <td>{{ order.created_at|date:"d M Y" }}</td>
