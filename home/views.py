@@ -21,9 +21,15 @@ def contact_us(request):
 
 def about(request):
     """
-    Render the about us page.
+    Render the about us page
+    with artist information.
     """
-    return render(request, 'home/about.html')
+    artist = ArtistBio.objects.first()
+    context = {
+        'artist': artist,
+        }
+
+    return render(request, 'home/about.html', context)
 
 
 def email_signup(request):

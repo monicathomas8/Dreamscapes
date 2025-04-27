@@ -13,6 +13,11 @@
     <p><strong>Last Name:</strong> {{ user.last_name }}</p>
     <a href="{% url 'update_profile' %}" class="btn btn-primary">Update Account Details</a>
     <hr>
+    {% if user.is_authenticated and user.profile.is_artist %}
+        <a href="{% url 'update-bio' %}" class="btn btn-primary">Edit Your Artist Bio on the About Page</a>
+        <hr>
+    {% endif %}
+
     <!-- Past Cart Orders -->
     <h2 class="mt-4">Past Orders</h2>
     {% if past_cart_orders %}
