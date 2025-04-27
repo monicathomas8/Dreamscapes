@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container text-white">
     <h1>Your Shopping Cart</h1>
-
-    <p><a href="{% url 'artwork-list' %}">Continue Shopping</a></p>
+    
+    <p><a class="btn" href="{% url 'artwork-list' %}">Continue Shopping</a></p>
 
     {% if messages %}
         <ul class="messages">
@@ -32,17 +33,17 @@
                         <td>{{ item.title }}</td>
                         <td>£{{ item.price }}</td>
                         <td>
-                            <a href="{% url 'remove-from-cart' artwork_id %}" class="btn btn-danger">Remove</a>
+                            <a href="{% url 'remove-from-cart' artwork_id %}" class="btn">Remove</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-
         <p><strong>Cart Total:</strong> £{{ total_price }}</p>
-
-        <a href="{% url 'checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+    </div>
+        <a href="{% url 'checkout' %}" class="btn">Proceed to Checkout</a>
     {% else %}
-        <p>Your cart is empty. <a href="{% url 'artwork-list' %}">Continue Shopping</a></p>
+        <p>Your cart is empty. <a class="btn" href="{% url 'artwork-list' %}">Continue Shopping</a></p>
     {% endif %}
+</div>
 {% endblock %}

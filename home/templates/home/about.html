@@ -1,25 +1,31 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<div class="container mt-5">
-    <h1>About DreamScapes</h1>
+<div class="container mt-5 text-white">
+    <h1 class="text-center mb-4">About DreamScapes</h1>
 
     <!-- Edit Bio Button for Artists -->
     {% if user.is_authenticated and user.profile.is_artist %}
-        <a href="{% url 'update-bio' %}" class="btn btn-primary mb-3">Edit Your Bio</a>
+        <div class="text-center">
+            <a href="{% url 'update-bio' %}" class="btn btn-primary mb-3">Edit Your Bio</a>
+        </div>
     {% endif %}
 
     <!-- Welcome Message -->
-    <p>Welcome to DreamScapes! Our mission is to bring dream-like landscapes and landmarks to life through digital art.</p>
-    <p>Feel free to explore our collection, and if you have any questions, don't hesitate to <a href="{% url 'contact-us' %}">Contact Us</a>.</p>
+    <p class="text-center">
+        Welcome to DreamScapes! Our mission is to bring dream-like landscapes and landmarks to life through digital art.
+    </p>
+    <p class="text-center">
+        Feel free to explore our collection, and if you have any questions, don't hesitate to <a href="{% url 'contact-us' %}" class="btn">Contact Us</a>.
+    </p>
 
     <!-- Artist Bio Section -->
-    <div class="card bg-light text-dark mt-4">
+    <div class="card bg-light mt-5">
         <div class="card-body">
             {% if artist %}
-                <h2>Meet The Artist {{ artist.name }}</h2>
+                <h2 class="text-center mb-4">Meet The Artist {{ artist.name }}</h2>
                 {% if artist.profile_image %}
-                    <div class="text-center mb-3">
+                    <div class="text-center mb-4">
                         <img src="{{ artist.profile_image.url }}" alt="{{ artist.name }}" class="img-fluid rounded-circle" style="max-width: 200px;">
                     </div>
                 {% endif %}
@@ -28,14 +34,16 @@
                 <p><strong>Interests:</strong> {{ artist.interests }}</p>
                 <p><strong>Work Experience:</strong> {{ artist.work_experience }}</p>
             {% else %}
-                <p>No artist bio is available at the moment.</p>
+                <p class="text-center text-warning">No artist bio is available at the moment.</p>
             {% endif %}
         </div>
     </div>
 
     <!-- Why DreamScapes Section -->
-    <h2 class="mt-5">Why DreamScapes?</h2>
-    <p>We are passionate about blending creativity with technology to create captivating visual experiences.</p>
-    <p>Thank you for visiting!</p>
+    <h2 class="text-center mt-5 mb-4">Why DreamScapes?</h2>
+    <p class="text-center">
+        We are passionate about blending creativity with technology to create captivating visual experiences.
+    </p>
+    <p class="text-center">Thank you for visiting!</p>
 </div>
 {% endblock %}

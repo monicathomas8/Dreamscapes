@@ -1,10 +1,19 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-    <h2>Thank You for Your Purchase!</h2>
-    <p>Your order has been placed successfully. You will receive an email confirmation shortly.</p>
-
+<div class="container mt-5 text-white">
+    <h2 class="text-center">Thank You for Your Purchase!</h2>
+    <p class="text-center">Your order has been placed successfully. You will receive an email confirmation shortly.</p>
     <hr>
-    <a href="{% url 'order-list' %}" class="btn btn-primary">View Your Orders</a>
-    <a href="" class="btn btn-secondary">Return to Home</a>
+</div>
+<div class="container mt-5 text-white">
+    <div class="row g-4">
+        <div class="col-md-12 text-center">
+            <a href="{% url 'order-list' %}" class="btn btn-primary mb-3">View Your Orders</a>
+            <a href="{% url 'user-dashboard' %}" class="btn btn-secondary mb-3">Return to Home</a>
+            <a href="{% url 'artwork-list' %}" class="btn btn-primary mb-3">Explore More Artworks</a>
+            <a href="{% url 'create-custom-order' %}" class="btn btn-secondary mb-3">Create Custom Order</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

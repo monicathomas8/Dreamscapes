@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
     <main>
-        <section>
+        <section class="index-hero">
             <h2>Discover Stunning Digital Art</h2>
             <p>Browse unique landscapes, dream-like images, and landmarks curated just for you.</p>
             <a href="{% url 'artwork-list' %}" class="btn">Explore Artworks</a>

@@ -2,6 +2,7 @@
 
 
 {% block content %}
+<div class="container mt-5 text-white">
     <h2>Checkout</h2>
 
     <table>
@@ -24,7 +25,7 @@
     </table>
 
     <p><strong>Total:</strong> £{{ total_price }}</p>
-
+</div>
     <form id="payment-form" method="POST" class="p-4 border rounded shadow bg-light">
         {% csrf_token %}
         <div class="mb-3">

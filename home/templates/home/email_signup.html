@@ -1,23 +1,31 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>Sign Up for Updates</h1>
-<p>Stay updated with our latest news, offers, and updates! Sign up with your email below:</p>
+<div class="container mt-5">
+    <h1 class="text-center text-white mb-4">Sign Up for Updates</h1>
+    <p class="text-center text-white mb-4">
+        Stay updated with our latest news, offers, and updates! Sign up with your email below:
+    </p>
 
-<form method="post" action=".">
-    {% csrf_token %}
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <button type="submit">Sign Up</button>
-</form>
+    <form method="post" action="." class="bg-light p-4 rounded">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+    </form>
 
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                {{ message }}
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
+    {% if messages %}
+        <ul class="list-group mt-4">
+            {% for message in messages %}
+                <li class="list-group-item bg-dark text-white {% if message.tags %} {{ message.tags }} {% endif %}">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
 {% endblock %}

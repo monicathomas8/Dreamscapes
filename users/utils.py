@@ -14,3 +14,4 @@ def send_confirmation_email(order):
     )
     recipient_list = [order.user.email]
     send_mail(subject, message, 'your-email@gmail.com', recipient_list)
+    

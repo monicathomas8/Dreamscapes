@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Explore DreamScapes</h1>
+    <h1 class="text-center mb-4 text-white">Explore DreamScapes</h1>
     <div class="row">
         {% for artwork in object_list %}
             <div class="col-md-4 mb-4">
@@ -15,9 +15,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ artwork.title }}</h5>
                         <p class="card-text">{{ artwork.description|truncatewords:20 }}</p>
-                        <p><strong>Theme:</strong> <span class="badge bg-success">{{ artwork.theme }}</span></p>
-                        <p><strong>Style:</strong> <span class="badge bg-warning">{{ artwork.style }}</span></p>
-                        <p><strong>Price:</strong> <span class="text-danger">£{{ artwork.price }}</span></p>
+                        <p><strong>Theme:</strong> <span >{{ artwork.theme }}</span></p>
+                        <p><strong>Style:</strong> <span >{{ artwork.style }}</span></p>
+                        <p><strong>Price:</strong> <span >£{{ artwork.price }}</span></p>
                         <a href="{% url 'add-to-cart' artwork.id %}" class="btn btn-success">Add to Cart</a>
                     </div>
                 </div>

@@ -1,0 +1,58 @@
+
+body {
+    background: linear-gradient(to bottom, #1b1a4b, #726cc7)
+}
+
+.btn {
+    background-color: #2f1b5e;
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #726cc7;
+}
+
+.index-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.index-hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.index-hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.index-hero .btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #2f1b5e;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.index-hero .btn:hover {
+    background-color: #726cc7;
+}
+
+.text-white {
+    color: #ffffff; /* White text */
+}

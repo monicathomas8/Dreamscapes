@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
+import requests
 import stripe
 from artwork.models import Artwork
 from .models import Order, OrderItem
 from django.core.mail import send_mail
-from django.http import FileResponse, Http404
+from django.http import Http404, HttpResponse
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -151,18 +152,27 @@ def order_detail(request, order_id):
 @login_required
 def download_order_item(request, order_item_id):
     """
-    serves the file for the specific order item.
-    Ensures only the order's owner can acess the file.
+    Serves the file for the specific order item.
+    Ensures only the order's owner can access the file.
     """
     order_item = get_object_or_404(
         OrderItem, id=order_item_id, order__user=request.user
     )
+
     try:
-        file_path = order_item.artwork.file.path
-        return FileResponse(
-            open(file_path, 'rb'),
-            as_attachment=True,
-            filename=order_item.artwork.title,
-        )
+        file_url = order_item.artwork.file.url
+        response = requests.get(file_url)
+        if response.status_code == 200:
+            return HttpResponse(
+                response.content,
+                content_type="application/octet-stream",
+                headers={
+                    "Content-Disposition": (
+                        f'attachment; filename="{order_item.artwork.title}"'
+                    )
+                },
+            )
+        else:
+            raise Http404("File not found")
     except Exception:
         raise Http404("File not found")

@@ -1,20 +1,29 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>Contact Us</h1>
-<p>We’d love to hear from you! Please fill out the form below:</p>
+<div class="container mt-5 ">
+    <h1 class="text-center mb-4 text-white">Contact Us</h1>
+    <p class="text-center mb-4 text-white">
+        We’d love to hear from you! Please fill out the form below:
+    </p>
 
-<form method="post" action=".">
-    {% csrf_token %}
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
-
-    <button type="submit">Submit</button>
-</form>
+    <form method="post" action="." class="bg-light p-4 rounded">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message:</label>
+            <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

@@ -1,16 +1,29 @@
-{% extends "base.html" %}
-
-{% block content %}
-    <h2>Your Orders</h2>
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container mt-5 text-white">
+  <h2 class="text-center mb-4">Your Orders</h2>
+  <div class="container mt-5">
+    <a href="javascript:history.back()" class="btn btn-secondary mb-3"
+      >← Go Back</a
+    >
+    <a href="{% url 'user-dashboard' %}" class="btn btn-secondary mb-3">
+      Your Dashboard</a
+    >
     {% if orders %}
-        <ul>
-            {% for order in orders %}
-                <li>
-                    <a href="{% url 'order-detail' order.id %}">Order #{{ order.id }}</a> - {{ order.status }} ({{ order.created_at|date:"M d, Y" }})
-                </li>
-            {% endfor %}
-        </ul>
+    <ul class="list-group">
+      {% for order in orders %}
+      <li class="list-group-item bg-light">
+        <a href="{% url 'order-detail' order.id %}" class="text-primary fw-bold"
+          >Order #{{ order.id }}</a
+        >
+        -
+        <span class="text-success">{{ order.status }}</span>
+        <span class="text-muted">({{ order.created_at|date:"M d, Y" }})</span>
+      </li>
+      {% endfor %}
+    </ul>
     {% else %}
-        <p>You haven't placed any orders yet.</p>
+    <p class="text-center text-warning">You haven't placed any orders yet.</p>
     {% endif %}
+  </div>
+</div>
 {% endblock %}
