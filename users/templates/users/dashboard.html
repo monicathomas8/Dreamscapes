@@ -2,8 +2,17 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center">Your Order History</h1>
-
+    <h1 class="text-center">Your Dashboard</h1>
+    <p class="text-center">Welcome, {{ user.username }}! Here you can manage your orders and view account details.</p>
+    <hr>
+    <!-- User Profile Section -->
+    <h2 class="mt-4">Account Details</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>First Name:</strong> {{ user.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+    <a href="{% url 'update_profile' %}" class="btn btn-primary">Update Account Details</a>
+    <hr>
     <!-- Past Cart Orders -->
     <h2 class="mt-4">Past Orders</h2>
     {% if past_cart_orders %}
@@ -31,7 +40,7 @@
     <p>No past orders found.</p>
     {% endif %}
 
-    <!-- Custom Orders -->
+    <!-- Custom Orders --> 
     <h2 class="mt-4">Custom Orders</h2>
     {% if custom_orders %}
     <table class="table table-striped mt-3">
