@@ -6,7 +6,6 @@ import stripe
 from artwork.models import Artwork
 from .models import Order, OrderItem
 from django.core.mail import send_mail
-from django.urls import reverse
 from django.http import FileResponse, Http404
 
 
@@ -79,7 +78,6 @@ def checkout(request):
             total_price=total_price / 100,
             status='Pending',
         )
-        print(f"DEBUG: Order created with ID {order.id}")
 
         for artwork_id, item in cart.items():
             artwork = get_object_or_404(Artwork, id=artwork_id)
@@ -153,7 +151,7 @@ def order_detail(request, order_id):
 @login_required
 def download_order_item(request, order_item_id):
     """
-    serve the fil for the specific order item.
+    serves the file for the specific order item.
     Ensures only the order's owner can acess the file.
     """
     order_item = get_object_or_404(
@@ -164,7 +162,7 @@ def download_order_item(request, order_item_id):
         return FileResponse(
             open(file_path, 'rb'),
             as_attachment=True,
-            filename=order_item.artwork.title
+            filename=order_item.artwork.title,
         )
     except Exception:
         raise Http404("File not found")
