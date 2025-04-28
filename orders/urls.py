@@ -6,7 +6,6 @@ from .views import (
     remove_from_cart,
     order_list,
     order_detail,
-    download_order_item,
 )
 
 urlpatterns = [
@@ -25,9 +24,4 @@ urlpatterns = [
     path('orders/', order_list, name='order-list'),
     path('orders/<int:order_id>/', order_detail, name='order-detail'),
     path('thank-you/', views.thank_you, name='thank-you'),
-    path(
-        'orders/download/<int:order_item_id>/',
-        download_order_item,
-        name='download-order-item',
-    ),
 ]

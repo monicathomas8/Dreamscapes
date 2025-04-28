@@ -2,12 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
-import requests
 import stripe
 from artwork.models import Artwork
 from .models import Order, OrderItem
 from django.core.mail import send_mail
-from django.http import Http404, HttpResponse
+from .forms import DeliveryAddressForm
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -105,7 +104,8 @@ def checkout(request):
 
 @login_required
 def thank_you(request):
-    """Display the thank-you page with download links."""
+    """Display the thank-you page with
+    download links and collect delivery details."""
     latest_order = Order.objects.filter(user=request.user) \
         .order_by('-created_at').first()
 
@@ -119,6 +119,11 @@ def thank_you(request):
             f"Order ID: {latest_order.id}\n"
             f"Total Price: £{latest_order.total_price}\n\n"
             "We hope you enjoy your purchase!\n\n"
+            "You will receive a separate email"
+            "with delivery details once your "
+            "artwork has been dispatched.\n\n"
+            "artwork has been dispatched.\n\n"
+            "If you have any questions, feel free to reach out to us.\n\n"
             "Best regards,\n"
             "DreamScapes Team"
         )
@@ -130,8 +135,21 @@ def thank_you(request):
             fail_silently=False,
         )
 
+    if request.method == 'POST':
+        address_form = DeliveryAddressForm(request.POST)
+        if address_form.is_valid():
+            delivery_data = address_form.cleaned_data
+            request.session['delivery_data'] = delivery_data
+            messages.success(request, "Delivery details saved successfully!")
+            return redirect('order-list')
+        else:
+            messages.error(request, "Please correct the errors below.")
+    else:
+        address_form = DeliveryAddressForm()
+
     return render(request, 'orders/thank_you.html', {
         "latest_order": latest_order,
+        "address_form": address_form,
     })
 
 
@@ -147,32 +165,3 @@ def order_detail(request, order_id):
     """Displays the details of a specific order."""
     order = get_object_or_404(Order, id=order_id, user=request.user)
     return render(request, 'orders/order_detail.html', {'order': order})
-
-
-@login_required
-def download_order_item(request, order_item_id):
-    """
-    Serves the file for the specific order item.
-    Ensures only the order's owner can access the file.
-    """
-    order_item = get_object_or_404(
-        OrderItem, id=order_item_id, order__user=request.user
-    )
-
-    try:
-        file_url = order_item.artwork.file.url
-        response = requests.get(file_url)
-        if response.status_code == 200:
-            return HttpResponse(
-                response.content,
-                content_type="application/octet-stream",
-                headers={
-                    "Content-Disposition": (
-                        f'attachment; filename="{order_item.artwork.title}"'
-                    )
-                },
-            )
-        else:
-            raise Http404("File not found")
-    except Exception:
-        raise Http404("File not found")
