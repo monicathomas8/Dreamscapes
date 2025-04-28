@@ -19,10 +19,6 @@
         {% for item in order.items.all %}
             <li class="list-group-item bg-light d-flex justify-content-between align-items-center">
                 {{ item.artwork.title }}
-                <a href="{% url 'download-order-item' item.id %}" class="btn btn-primary btn-sm" download>
-                    Download
-                </a>
-            </li>
         {% endfor %}
     </ul>
 

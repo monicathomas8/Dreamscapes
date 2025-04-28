@@ -64,13 +64,17 @@
 
     <div class="container">
       {% if messages %}
-      <div class="messages">
-        {% for message in messages %}
-        <div class="alert {{ message.tags }}">{{ message }}</div>
-        {% endfor %}
+      <div class="alert-container">
+          {% for message in messages %}
+          <div class="alert {{ message.tags }} message-box">
+              {{ message }}
+              <button class="close-btn" onclick="this.parentElement.style.display='none';">×</button>
+          </div>
+          {% endfor %}
       </div>
-      {% endif %} {% block content %}{% endblock %}
-    </div>
+      {% endif %}
+      {% block content %}{% endblock %}
+  </div>
     <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="row">
           <div class="col-md-6 text-start">
