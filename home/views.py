@@ -69,3 +69,8 @@ def update_bio(request):
     else:
         form = ArtistBioForm(instance=bio)
     return render(request, 'home/update_bio.html', {'form': form})
+
+
+def faq(request):
+    """FAQ page view."""
+    return render(request, 'home/faq.html')

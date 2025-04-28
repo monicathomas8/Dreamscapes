@@ -43,6 +43,7 @@
               <a href="{% url 'artwork-list' %}" class="nav-link">Artworks</a>
               <a href="{% url 'contact-us' %}" class="nav-link">Contact Us</a>
               <a href="{% url 'about' %}" class="nav-link">About Us</a>
+              <a href="{% url 'faq' %}" class="nav-link">FAQs</a>
               <a href="{% url 'email-signup' %}" class="nav-link">Sign Up for Updates</a>
               <a href="{% url 'create-custom-order' %}" class="nav-link">Custom Order</a>
               {% if user.is_authenticated %}
@@ -80,6 +81,7 @@
           <div class="col-md-6 text-start">
             <div class="d-flex flex-wrap justify-content-start">
               <a href="{% url 'artwork-list' %}" class="text-white me-3">Artworks</a>
+              <a href="{% url 'faq' %}" class="text-white me-3">FAQs</a>
               <a href="{% url 'contact-us' %}" class="text-white me-3">Contact Us</a>
               <a href="{% url 'about' %}" class="text-white me-3">About Us</a>
               <a href="{% url 'email-signup' %}" class="text-white me-3">Sign Up</a>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}FAQs | DreamScapes {% endblock %}
+{% block content %}
+
+<div class="container mt-5 text-white">
+    <h2>Frequently Asked Questions</h2>
+    <p>Welcome to our FAQ page! If you have any questions, you might find the answers here. If not, feel free to <a class="btn" href="{% url 'contact-us' %}">contact us</a>.</p>
+
+    <h3>Ordering Process</h3>
+    <div class="faq-item">
+        <p><strong> How do I place an order?</strong></p>
+        <p>Browse our collection, add items to your cart, and proceed to checkout.</p>
+    </div>
+    <div class="faq-item">
+        <p><strong>Can I customize an artwork?</strong></p>
+        <p>Yes! Visit our <a class="btn" href="{% url 'create-custom-order' %}">Custom Order</a> page to submit your request.</p>
+    </div>
+
+    <h3>Delivery and Shipping</h3>
+    <div class="faq-item">
+        <p><strong>Do you ship internationally?</strong></p>
+        <p>No, we only ship to locations within the United Kingdom.</p>
+    </div>
+    <div class="faq-item">
+        <p><strong>How long will my order take to arrive?</strong></p>
+        <p>Delivery typically takes 3–5 business days within the UK.</p>
+    </div>
+
+    <h3>Product Details</h3>
+    <div class="faq-item">
+        <p><strong>What size are your prints?</strong></p>
+        <p>All prints are A4 size and unframed. If you need a different size, please place a <a class="btn" href="{% url 'create-custom-order' %}">custom order</a>.</p>
+    </div>
+</div>
+
+{% endblock %}

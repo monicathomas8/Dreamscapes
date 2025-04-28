@@ -4,7 +4,7 @@ body {
 }
 
 .btn {
-    background-color: #382663;
+    background-color: #702c52;
     color: #ffffff;
     border: none;
     font-weight: bold;
@@ -42,7 +42,7 @@ body {
 .index-hero .btn {
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: #3d2e5f;
+    background-color: #702c52;
     color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
