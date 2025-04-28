@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/contact/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/about/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/faq/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/email-signup/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/accounts/login/?next=/users/custom-order/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/accounts/login/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/orders/cart/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/alone/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/different-world/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/green-castle/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/halloween-paris/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/illusions-of-mood/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/lighthouse-of-solitude/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/majestic-wildlife-beyond-earth/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/meadow-of-memories/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/mistbound-station/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/new-meets-old/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/order-on-demand/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/pink-dream/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/submerged-london/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/thought-consumed/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dreamscapes-4bf65f774d22.herokuapp.com/artwork/world-under-water/</loc>
+  <lastmod>2025-04-28T08:14:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

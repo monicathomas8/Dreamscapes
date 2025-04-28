@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /cart/
+Sitemap: https://dreamscapes-4bf65f774d22.herokuapp.com/Sitemap.xml
