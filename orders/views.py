@@ -122,7 +122,6 @@ def thank_you(request):
             "You will receive a separate email"
             "with delivery details once your "
             "artwork has been dispatched.\n\n"
-            "artwork has been dispatched.\n\n"
             "If you have any questions, feel free to reach out to us.\n\n"
             "Best regards,\n"
             "DreamScapes Team"
@@ -139,7 +138,18 @@ def thank_you(request):
         address_form = DeliveryAddressForm(request.POST)
         if address_form.is_valid():
             delivery_data = address_form.cleaned_data
-            request.session['delivery_data'] = delivery_data
+
+            if latest_order:
+                latest_order.first_name = delivery_data['first_name']
+                latest_order.last_name = delivery_data['last_name']
+                latest_order.email = delivery_data['email']
+                latest_order.address_line_1 = delivery_data['address_line_1']
+                latest_order.address_line_2 = delivery_data['address_line_2']
+                latest_order.city = delivery_data['city']
+                latest_order.postal_code = delivery_data['postal_code']
+                latest_order.country = delivery_data['country']
+                latest_order.save()
+
             messages.success(request, "Delivery details saved successfully!")
             return redirect('order-list')
         else:
