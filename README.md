@@ -7,7 +7,7 @@ live site is here: [DreamScapes](https://dreamscapes-4bf65f774d22.herokuapp.com/
 
 To test use card: 4242 4242 4242 4242 
 
-![website](static\images\screens.png)
+![website](static/images/screens.png)
 
 ## User Experience Design
 
@@ -26,14 +26,14 @@ To test use card: 4242 4242 4242 4242
 ### 1. Wireframes
 - Wireframes created to map out the structure and flow of the website.
 - Tools used: Balsamiq
-![wireframe mock up](static\images\wireframe.png)
+![wireframe mock up](static/images/wireframe.png)
 
 ### 2. Design
 - Designed using Bootstrap for responsiveness and cohesive layout. Finished with a personal style CSS.
 
 ### 3. Lucid Board
 - Utilized Lucidchart to visualize user journeys and workflows.
-![planning](static\images\luicd.png)
+![planning](static/images/luicd.png)
 ---
 
 ## Business Model
@@ -48,9 +48,9 @@ DreamScapes generates revenue through multiple channels:
 - **Web Marketing:** 
 SEO optimization, email campaigns via Mailchimp, and targeted social media presence to increase visibility and engagement.
 FaceBook Page
-![Facebook Page](static\images\faceboopage.png)
+![Facebook Page](static/images/faceboopage.png)
 MAilChimp Sign Up 
-![mailchimp](static\images\mailchimp.png)
+![mailchimp](static/images/mailchimp.png)
 ---
 
 ## Technologies Used
@@ -83,25 +83,25 @@ MAilChimp Sign Up
 - A streamlined, visually appealing user interface with artistic touches.
 
 **Landing Page**
-![DreamScapes Home Page](static\images\homepage.png)
+![DreamScapes Home Page](static/images/homepage.png)
 
 **Art Shop**: A grid display of availabile.
-![Art Shopp Page](static\images\artshop.png)
+![Art Shopp Page](static/images/artshop.png)
 
  **Art Detail**: A page that loads the full artwork with more detils.
-![Art detail Page](static\images\artdetail.png)
+![Art detail Page](static/images/artdetail.png)
 
  **FAQs**: An FAQs page to help shoppers. 
-![Art detail Page](static\images\faqs.png)
+![Art detail Page](static/images/faqs.png)
 
 - **Responsive Design**: Fully responsive for an optimal experience across devices. These include:
 
    1. Navbav - adaptive for different screen sizes, with a toogle button and dropdown menu.
-    ![Navbar dropdown menu](static\images\navbar.png)
+    ![Navbar dropdown menu](static/images/navbar.png)
    2. Footer with social links. 
-   ![footer ](static\images\footer.png)
+   ![footer ](static/images/footer.png)
    3. Pop up messages
-   ![pop up message](static\images\popup.png)
+   ![pop up message](static/images/popup.png)
  
 ### 2. Colour Scheme
 - Calming blues and purples to evoke serenity.
@@ -379,11 +379,11 @@ I want to search for artwork using keywords so that I can find specific pieces q
 - Python code validated with PEP8 standards.
 - Lighthouse
 PEP8
-![PEP8](static\images\pep8.png)
+![PEP8](static/images/pep8.png)
 CSS
-![CSS](static\images\css.png)
+![CSS](static/images/css.png)
 Lighthouse
-![lighthouse](static\images\lighthouse.png)
+![lighthouse](static/images/lighthouse.png)
 ---
 
 ## Bugs
