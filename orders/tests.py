@@ -151,3 +151,54 @@ class CheckoutPaymentDisplayTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Display Test Art')
         self.assertContains(response, '£25.00')
+
+
+class CheckoutPaymentAddressDisplayTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username='addruser', password='addrpass'
+        )
+        self.client.login(username='addruser', password='addrpass')
+
+        self.artwork = Artwork.objects.create(
+            title='Test Art',
+            price=20.00,
+            description='Art description',
+            image='test.jpg'
+        )
+
+        self.order = Order.objects.create(
+            user=self.user,
+            total_price=20.00,
+            status='Pending',
+            first_name='Alice',
+            last_name='Smith',
+            email='alice@example.com',
+            address_line_1='123 Art Street',
+            address_line_2='Unit 4',
+            city='London',
+            postal_code='W1A 1AA',
+            country='GB',
+        )
+
+        OrderItem.objects.create(
+            order=self.order,
+            artwork=self.artwork,
+            price=20.00,
+            quantity=1,
+        )
+
+        session = self.client.session
+        session['order_id'] = self.order.id
+        session.save()
+
+    def test_checkout_payment_displays_shipping_address(self):
+        response = self.client.get(reverse('checkout-payment'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Alice')
+        self.assertContains(response, 'Smith')
+        self.assertContains(response, '123 Art Street')
+        self.assertContains(response, 'Unit 4')
+        self.assertContains(response, 'London')
+        self.assertContains(response, 'W1A 1AA')
+        self.assertContains(response, 'GB')
