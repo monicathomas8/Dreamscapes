@@ -7,7 +7,6 @@ from artwork.models import Artwork
 from .models import Order, OrderItem
 from django.core.mail import send_mail
 from .forms import DeliveryAddressForm
-from django.http import HttpResponse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -139,21 +138,22 @@ def shipping_info(request):
 
 @login_required
 def checkout_payment(request):
+    """Handle the payment process for the order."""
     order_id = request.session.get('order_id')
     if not order_id:
         return redirect('cart-view')
 
     order = get_object_or_404(Order, id=order_id, user=request.user)
 
-    intent = stripe.PaymentIntent.create(
+    payment_intent = stripe.PaymentIntent.create(
         amount=int(order.total_price * 100),
         currency='gbp',
     )
 
     context = {
         'order': order,
-        'client_secret': intent.client_secret,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'client_secret': payment_intent.client_secret,
     }
     return render(request, 'orders/checkout_payment.html', context)
 

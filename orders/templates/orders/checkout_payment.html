@@ -3,9 +3,65 @@
 {% block title %}Secure Payment{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1>Secure Payment</h1>
-    <p>Your order total is: £{{ order.total_price }}</p>
-    <p>Stripe Client Secret: {{ client_secret }}</p>
+<div class="container mt-5 text-white">
+    <h2>Checkout</h2>
+    <p>Please review your order details below:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart.values %}
+                <tr>
+                    <td><img src="{{ item.image }}" alt="{{ item.title }}" width="100"></td>
+                    <td>{{ item.title }}</td>
+                    <td>£{{ item.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><strong>Total:</strong> £{{ total_price }}</p>
 </div>
+    <form id="payment-form" method="POST" class="p-4 border rounded shadow bg-light">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="card-element" class="form-label">Card Details</label>
+            <input type="text" id="card-input" name="card-input" style="display: none;">
+            <div id="card-element" class="form-control">
+                <!-- Stripe's card input field will be inserted here -->
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Complete Payment</button>
+    </form>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    var stripe = Stripe("{{ stripe_public_key }}"); // Access public key
+    var elements = stripe.elements();
+
+    // Create the card element
+    var cardElement = elements.create("card");
+    cardElement.mount("#card-element");
+
+    // Handle form submission
+    document.querySelector("#payment-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        stripe.confirmCardPayment("{{ client_secret }}", { // Access client secret
+            payment_method: { card: cardElement }
+        }).then(function(result) {
+            if (result.error) {
+                alert(result.error.message); // Display error
+            } else {
+                document.querySelector("#payment-form").submit(); // Trigger backend submission
+            }
+        });
+    });
+</script>
 {% endblock %}

@@ -5,6 +5,7 @@ from orders.models import Order
 from artwork.models import Artwork
 from unittest.mock import patch
 from django.conf import settings
+from orders.models import Order
 
 User = get_user_model()
 
@@ -87,3 +88,30 @@ class CheckoutPaymentTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'test_client_secret')
+
+
+class CheckoutPaymentViewTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username='monicatester',
+            password='testpass'
+        )
+        self.client.login(username='monicatester', password='testpass')
+        self.order = Order.objects.create(
+            user=self.user,
+            total_price=50.00,
+            status='Pending'
+        )
+        session = self.client.session
+        session['order_id'] = self.order.id
+        session.save()
+
+    @patch('stripe.PaymentIntent.create')
+    def test_checkout_payment_view_loads_and_has_client_secret(
+        self, mock_create
+    ):
+        mock_create.return_value.client_secret = 'fake_secret'
+
+        response = self.client.get(reverse('checkout-payment'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'fake_secret')
