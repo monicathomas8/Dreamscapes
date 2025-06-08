@@ -7,7 +7,7 @@ from artwork.models import Artwork
 from .models import Order, OrderItem
 from django.core.mail import send_mail
 from .forms import DeliveryAddressForm
-
+from django.http import HttpResponse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -100,6 +100,11 @@ def checkout(request):
         'client_secret': payment_intent.client_secret,
     }
     return render(request, 'orders/checkout.html', context)
+
+
+@login_required
+def shipping_info(request):
+    return HttpResponse("This is the shipping info page")
 
 
 @login_required
