@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Secure Payment{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Secure Payment</h1>
+    <p>Your order total is: £{{ order.total_price }}</p>
+    <p>Stripe Client Secret: {{ client_secret }}</p>
+</div>
+{% endblock %}
