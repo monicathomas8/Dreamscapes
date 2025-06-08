@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from orders.models import Order
+from artwork.models import Artwork
 
 
 User = get_user_model()
@@ -16,13 +17,22 @@ class ShippingInfoTest(TestCase):
             password='testpass',
         )
         self.client.login(username='testuser', password='testpass')
-        self.cart_data = {
-            '1': {
-                'title': 'Test Art',
-                'price': '10.00',
-                'image': 'test_image.jpg',
-            },
 
+    # Mock cart data
+
+        self.artwork = Artwork.objects.create(
+            title='Test Art',
+            price=10.00,
+            image='test.jpg',
+        )
+
+        self.cart_data = {
+            str(self.artwork.id): {
+                'title': self.artwork.title,
+                'price': str(self.artwork.price),
+                'image': 'test.jpg',
+                'quantity': 1,
+            }
         }
 
     def test_shipping_info_creates_order(self):

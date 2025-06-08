@@ -16,6 +16,7 @@ urlpatterns = [
     ),
     path('cart/', cart_view, name='cart-view'),
     path('shipping-info/', views.shipping_info, name='shipping-info'),
+    path('payment/', views.checkout_payment, name='checkout-payment'),
     path('checkout/', checkout, name='checkout'),
     path(
         'cart/remove/<int:artwork_id>/',

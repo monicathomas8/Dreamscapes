@@ -104,7 +104,42 @@ def checkout(request):
 
 @login_required
 def shipping_info(request):
-    return HttpResponse("This is the shipping info page")
+    """Display the shipping information page."""
+    cart = request.session.get('cart', {})
+    if not cart:
+        return redirect('cart-view')
+    if request.method == 'POST':
+        form = DeliveryAddressForm(request.POST)
+        if form.is_valid():
+            total_price = sum(float(item['price']) for item in cart.values())
+
+            order = Order.objects.create(
+                user=request.user,
+                total_price=total_price,
+                status='Pending',
+                **form.cleaned_data
+            )
+
+            for artwork_id, item in cart.items():
+                artwork = get_object_or_404(Artwork, id=artwork_id)
+                OrderItem.objects.create(
+                    order=order,
+                    artwork=artwork,
+                    price=float(item['price']),
+                    quantity=1,
+                )
+            request.session['order_id'] = order.id
+            request.session['cart'] = {}
+            return redirect('checkout-payment')  # You can update this later
+    else:
+        form = DeliveryAddressForm()
+
+    return render(request, 'orders/shipping_info.html', {'form': form})
+
+
+@login_required
+def checkout_payment(request):
+    return HttpResponse("Payment step placeholder")
 
 
 @login_required
