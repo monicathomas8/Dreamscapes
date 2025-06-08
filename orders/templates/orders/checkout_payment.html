@@ -15,17 +15,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in cart.values %}
-                <tr>
-                    <td><img src="{{ item.image }}" alt="{{ item.title }}" width="100"></td>
-                    <td>{{ item.title }}</td>
-                    <td>£{{ item.price }}</td>
-                </tr>
-            {% endfor %}
+            {% for item in order_items %}
+    <tr>
+        <td><img src="{{ item.artwork.image.url }}" alt="{{ item.artwork.title }}" width="100"></td>
+        <td>{{ item.artwork.title }}</td>
+        <td>£{{ item.price }}</td>
+    </tr>
+{% endfor %}
+
         </tbody>
     </table>
 
-    <p><strong>Total:</strong> £{{ total_price }}</p>
+    <p><strong>Total:</strong> £{{ order.total_price }}</p>
 </div>
     <form id="payment-form" method="POST" class="p-4 border rounded shadow bg-light">
         {% csrf_token %}

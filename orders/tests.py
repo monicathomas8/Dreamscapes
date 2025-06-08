@@ -1,11 +1,9 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-from orders.models import Order
+from orders.models import Order, OrderItem
 from artwork.models import Artwork
 from unittest.mock import patch
-from django.conf import settings
-from orders.models import Order
 
 User = get_user_model()
 
@@ -115,3 +113,41 @@ class CheckoutPaymentViewTest(TestCase):
         response = self.client.get(reverse('checkout-payment'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'fake_secret')
+
+
+class CheckoutPaymentDisplayTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username='displayuser', password='displaypass'
+        )
+        self.client.login(username='displayuser', password='displaypass')
+
+        self.artwork = Artwork.objects.create(
+            title='Display Test Art',
+            price=25.00,
+            description='Test art for display',
+            image='test.jpg'
+        )
+
+        self.order = Order.objects.create(
+            user=self.user,
+            total_price=25.00,
+            status='Pending'
+        )
+
+        OrderItem.objects.create(
+            order=self.order,
+            artwork=self.artwork,
+            price=25.00,
+            quantity=1,
+        )
+
+        session = self.client.session
+        session['order_id'] = self.order.id
+        session.save()
+
+    def test_checkout_payment_displays_order_items(self):
+        response = self.client.get(reverse('checkout-payment'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Display Test Art')
+        self.assertContains(response, '£25.00')

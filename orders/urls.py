@@ -2,7 +2,6 @@ from django.urls import path
 from . import views
 from .views import (
     cart_view,
-    checkout,
     remove_from_cart,
     order_list,
     order_detail,
@@ -17,7 +16,6 @@ urlpatterns = [
     path('cart/', cart_view, name='cart-view'),
     path('shipping/', views.shipping_info, name='shipping-info'),
     path('payment/', views.checkout_payment, name='checkout-payment'),
-    path('checkout/', checkout, name='checkout'),
     path(
         'cart/remove/<int:artwork_id>/',
         remove_from_cart,
