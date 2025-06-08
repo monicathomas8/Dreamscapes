@@ -139,7 +139,23 @@ def shipping_info(request):
 
 @login_required
 def checkout_payment(request):
-    return HttpResponse("Payment step placeholder")
+    order_id = request.session.get('order_id')
+    if not order_id:
+        return redirect('cart-view')
+
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+
+    intent = stripe.PaymentIntent.create(
+        amount=int(order.total_price * 100),
+        currency='gbp',
+    )
+
+    context = {
+        'order': order,
+        'client_secret': intent.client_secret,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+    }
+    return render(request, 'orders/checkout_payment.html', context)
 
 
 @login_required
