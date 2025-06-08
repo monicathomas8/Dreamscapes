@@ -57,11 +57,14 @@
             payment_method: { card: cardElement }
         }).then(function(result) {
             if (result.error) {
-                alert(result.error.message); // Display error
+                alert(result.error.message);
             } else {
-                document.querySelector("#payment-form").submit(); // Trigger backend submission
+                if (result.paymentIntent.status === 'succeeded') {
+                    window.location.href = "{% url 'thank-you' %}";
+                }
             }
         });
+
     });
 </script>
 {% endblock %}

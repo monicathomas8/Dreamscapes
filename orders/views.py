@@ -58,50 +58,6 @@ def cart_view(request):
 
 
 @login_required
-def checkout(request):
-    """Processes checkout and creates an order."""
-    cart = request.session.get('cart', {})
-    if not cart:
-        return redirect('cart-view')
-
-    total_price = sum(float(item['price']) for item in cart.values()) * 100
-
-    payment_intent = stripe.PaymentIntent.create(
-        amount=int(total_price),
-        currency='gbp',
-    )
-
-    if request.method == 'POST':
-        order = Order.objects.create(
-            user=request.user,
-            total_price=total_price / 100,
-            status='Pending',
-        )
-
-        for artwork_id, item in cart.items():
-            artwork = get_object_or_404(Artwork, id=artwork_id)
-            OrderItem.objects.create(
-                order=order,
-                artwork=artwork,
-                price=float(item['price']),
-                quantity=1,
-            )
-
-        request.session['cart'] = {}
-        request.session.modified = True
-
-        return redirect('thank-you')
-
-    context = {
-        'cart': cart,
-        'total_price': total_price / 100,
-        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
-        'client_secret': payment_intent.client_secret,
-    }
-    return render(request, 'orders/checkout.html', context)
-
-
-@login_required
 def shipping_info(request):
     """Display the shipping information page."""
     cart = request.session.get('cart', {})
@@ -152,6 +108,7 @@ def checkout_payment(request):
 
     context = {
         'order': order,
+        'order_items': order.items.all(),
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': payment_intent.client_secret,
     }
@@ -175,7 +132,7 @@ def thank_you(request):
             f"Order ID: {latest_order.id}\n"
             f"Total Price: £{latest_order.total_price}\n\n"
             "We hope you enjoy your purchase!\n\n"
-            "You will receive a separate email"
+            "You will receive a separate email "
             "with delivery details once your "
             "artwork has been dispatched.\n\n"
             "If you have any questions, feel free to reach out to us.\n\n"

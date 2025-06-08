@@ -5,18 +5,10 @@
 <div class="container mt-5 text-white">
     <h2 class="text-center">Thank You for Your Purchase!</h2>
     <p class="text-center">Your order has been placed successfully. You will receive an email confirmation shortly.</p>
-    <p class="text-center">Please enter your details for delivery.</p>
 
-    <div class="delivery-form mb-4 p-4 bg-light text-dark rounded">
-        <h3>Delivery Address</h3>
-        <form method="POST">
-            {% csrf_token %}
-            {{ address_form.as_p }}
-            <button type="submit" class="btn btn-primary">Save Address</button>
-        </form>
-    </div>
-    
-    <p class="text-center">If you have any questions, feel free to <a href="{% url 'contact-us' %}" class="text-white">contact us</a>.</p>
+    <p class="text-center">We appreciate your support and hope you enjoy your new artwork!</p>
+    <p class="text-center">If you have any questions or need assistance, please don't hesitate to
+    <a href="{% url 'contact-us' %}" class="text-white">contact us</a></p>
     <hr>
 </div>
 <div class="container mt-5 text-white">
