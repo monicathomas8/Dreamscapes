@@ -27,6 +27,17 @@
     </table>
 
     <p><strong>Total:</strong> £{{ order.total_price }}</p>
+
+    <h3>Shipping Address</h3>
+    <p>{{ order.first_name }} {{ order.last_name }}</p>
+    <p>{{ order.address_line_1 }}</p>
+    {% if order.address_line_2 %}
+    <p>{{ order.address_line_2 }}</p>
+    {% endif %}
+    <p>{{ order.city }}</p>
+    <p>{{ order.postal_code }}</p>
+    <p>{{ order.country }}</p>
+
 </div>
     <form id="payment-form" method="POST" class="p-4 border rounded shadow bg-light">
         {% csrf_token %}
