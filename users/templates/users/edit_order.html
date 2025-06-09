@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 <div class="container mt-5">
-    <h1>Edit Custom Order</h1>
+    <h1 class="text-white">Edit Custom Order</h1>
     <form method="post" class="p-4 border rounded shadow-sm bg-light">
         {% csrf_token %}
         {{ form.as_p }}
