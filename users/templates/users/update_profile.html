@@ -4,12 +4,21 @@
 {% block content %}
 <div class="container mt-5">
     <h2 class="text-center text-white mb-4">Update Your Profile</h2>
-    <form method="POST" class="bg-light p-4 rounded">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="text-center mt-3">
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+    <form method="POST" class="bg-light p-4 rounded shadow">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="mb-3">
+            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+                <div class="text-danger small">{{ field.errors|striptags }}</div>
+            {% endif %}
         </div>
-    </form>
+    {% endfor %}
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </div>
+</form>
+
 </div>
 {% endblock %}
