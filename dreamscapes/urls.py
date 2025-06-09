@@ -21,3 +21,6 @@ if settings.DEBUG:
     urlpatterns += static(
         settings.STATIC_URL, document_root=settings.STATIC_ROOT
     )
+
+
+handler404 = 'dreamscapes.views.custom_404'
