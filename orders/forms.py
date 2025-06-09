@@ -1,7 +1,16 @@
 from django import forms
+from .models import Order
 
 
 class DeliveryAddressForm(forms.Form):
+    class Meta:
+        model = Order
+        fields = [
+            'first_name', 'last_name', 'email',
+            'address_line_1', 'address_line_2',
+            'city', 'postal_code', 'country'
+        ]
+
     first_name = forms.CharField(
         max_length=50,
         required=True,
@@ -41,3 +50,8 @@ class DeliveryAddressForm(forms.Form):
         required=True,
         widget=forms.TextInput(attrs={'placeholder': 'Country'})
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
