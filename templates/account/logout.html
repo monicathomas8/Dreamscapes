@@ -5,17 +5,19 @@ Log Out
 {% endblock title %}
 
 {% block content %}
-<div class="container mt-5 text-white">
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6 text-center">
-            <h1 class="mb-4">Log Out</h1>
-            <p class="mb-4">Are you sure you want to sign out?</p>
-            <form method="post" action="{% url 'account_logout' %}">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger w-100">Yes, Log Out</button>
-            </form>
-            <div class="mt-3">
-                <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+        <div class="col-md-6">
+            <div class="bg-light p-4 rounded shadow text-center">
+                <h1 class="mb-4">Log Out</h1>
+                <p class="mb-4">Are you sure you want to sign out?</p>
+                <form method="post" action="{% url 'account_logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger w-100">Yes, Log Out</button>
+                </form>
+                <div class="mt-3">
+                    <a href="{% url 'home' %}" class="btn btn-secondary btn-sm">Back to Home</a>
+                </div>
             </div>
         </div>
     </div>
