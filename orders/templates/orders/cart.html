@@ -1,41 +1,46 @@
 {% extends "base.html" %}
 {% block title %}Cart{% endblock %}
 {% block content %}
-<div class="container text-white">
-    <h1>Your Shopping Cart</h1>
+<div class="container mt-5 text-white">
+    <h1 class="text-center mb-4">Your Shopping Cart</h1>
     
-    <p><a class="btn" href="{% url 'artwork-list' %}">Continue Shopping</a></p>
-
-    <h2>Your Cart</h2>
+    <div class="mb-3 text-center">
+        <a class="btn btn-secondary" href="{% url 'artwork-list' %}">Continue Shopping</a>
+    </div>
 
     {% if cart %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for artwork_id, item in cart.items %}
+    <div class="bg-light text-dark p-4 rounded shadow">
+        <h2>Your Cart</h2>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td><img src="{{ item.image }}" alt="{{ item.title }}" width="100"></td>
-                        <td>{{ item.title }}</td>
-                        <td>£{{ item.price }}</td>
-                        <td>
-                            <a href="{% url 'remove-from-cart' artwork_id %}" class="btn">Remove</a>
-                        </td>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Actions</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <p><strong>Cart Total:</strong> £{{ total_price }}</p>
+                </thead>
+                    <tbody>
+                    {% for artwork_id, item in cart.items %}
+                        <tr>
+                            <td><img src="{{ item.image }}" alt="{{ item.title }}" width="100" class="rounded"></td>
+                            <td>{{ item.title }}</td>
+                            <td>£{{ item.price }}</td>
+                            <td>
+                                <a href="{% url 'remove-from-cart' artwork_id %}" class="btn btn-danger btn-sm">Remove</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <p class="mt-3"><strong>Cart Total:</strong> £{{ total_price }}</p>
+            <div class="text-end">
+                <a href="{% url 'shipping-info' %}" class="btn btn-success">Proceed to Checkout</a>
+            </div>
+            {% else %}
+                <p>Your cart is empty. <a class="btn btn-primary" href="{% url 'artwork-list' %}">Continue Shopping</a></p>
+            {% endif %}
     </div>
-        <a href="{% url 'shipping-info' %}" class="btn">Proceed to Checkout</a>
-    {% else %}
-        <p>Your cart is empty. <a class="btn" href="{% url 'artwork-list' %}">Continue Shopping</a></p>
-    {% endif %}
 </div>
 {% endblock %}

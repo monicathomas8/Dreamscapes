@@ -2,26 +2,34 @@
 {% block title %}Orders- DreamScapes{% endblock %}
 {% load static %}
 {% block content %}
+
 <div class="container mt-5 text-white">
     <h2 class="text-center mb-4">Order Details</h2>
-    <a href="{% url 'user-dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
-    <a href="{% url 'order-list' %}" class="btn btn-primary">Back to Order History</a>
-    <hr>
+    <div class="mb-4 text-center">
+        <a href="{% url 'user-dashboard' %}" class="btn btn-secondary me-2">Back to Dashboard</a>
+        <a href="{% url 'order-list' %}" class="btn btn-primary">Back to Order History</a>
+    </div>
 
-    <div class="mb-4">
+    <div class="bg-light text-dark p-4 rounded shadow">
+        <h4 class="mb-3">Order Summary</h4>
         <p><strong>Order ID:</strong> {{ order.id }}</p>
         <p><strong>Status: <span class="text-success">{{ order.status }}</strong></span></p>
         <p><strong>Total Price:</strong> £{{ order.total_price }}</p>
+        
+        <hr>
+
+        <h5 class="mb-3">Purchased Artworks</h5>
+        {% if order.items.all %}
+        <ul class="list-group">
+            {% for item in order.items.all %}
+                <li class="list-group-item bg-white">
+                    {{ item.artwork.title }} 
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No artworks purchased in this order.</p>
+        {% endif %}
     </div>
-
-    <h3 class="mb-3">Purchased Artworks</h3>
-    <ul class="list-group mb-4">
-        {% for item in order.items.all %}
-            <li class="list-group-item bg-light d-flex justify-content-between align-items-center">
-                {{ item.artwork.title }}
-        {% endfor %}
-    </ul>
-
-    <hr>
 </div>
 {% endblock %}
