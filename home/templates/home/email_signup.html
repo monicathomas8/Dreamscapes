@@ -1,86 +1,53 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Sign Up{% endblock %}
+
 {% block content %}
-<div class="container mt-5 ">
+<div class="container mt-5">
     <div class="text-shadow">
         <h1 class="text-center text-white mb-4">Sign Up for Updates</h1>
         <p class="text-center text-white mb-4">
-            Stay updated with our latest news, offers, and updates! Sign up with your
-            email below:
+            Stay updated with our latest news, offers, and updates! Sign up with your email below:
         </p>
     </div>
-    <div id="mc_embed_shell">
-        <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css" />
-        <style type="text/css">
-            #mc_embed_signup {
-                background: #fff;
-                clear: left;
-                font: 14px Helvetica, Arial, sans-serif;
-                width: 600px;
-            }
 
-            /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-         We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-        </style>
-        <div id="mc_embed_signup">
-            <form
-                action="https://gmail.us9.list-manage.com/subscribe/post?u=7d93a89bf0350632e20a10cfc&amp;id=cd3abcc979&amp;f_id=000556e1f0"
-                method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-                target="_blank">
-                <div id="mc_embed_signup_scroll">
-                    <h2>Subscribe</h2>
-                    <div class="indicates-required">
-                        <span class="asterisk">*</span> indicates required
-                    </div>
-                    <div class="mc-field-group">
-                        <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email"
-                            name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" />
-                    </div>
-                    <div id="mce-responses" class="clear foot">
-                        <div class="response" id="mce-error-response" style="display: none"></div>
-                        <div class="response" id="mce-success-response" style="display: none"></div>
-                    </div>
-                    <div aria-hidden="true" style="position: absolute; left: -5000px">
-                        /* real people should not fill this in and expect good things - do
-                        not remove this or risk form bot signups */
-                        <input type="text" name="b_7d93a89bf0350632e20a10cfc_cd3abcc979" tabindex="-1" value="" />
-                    </div>
-                    <div class="optionalParent">
-                        <div class="clear foot">
-                            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button"
-                                value="Subscribe" />
-                            <p style="margin: 0px auto">
-                                <a href="http://eepurl.com/jdssj2"
-                                    title="Mailchimp - email marketing made easy and fun"><span style="
-                      display: inline-block;
-                      background-color: transparent;
-                      border-radius: 4px;"><img class="refferal_badge"
-                                            src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg"
-                                            alt="Intuit Mailchimp" style="
-                        width: 220px;
-                        height: 40px;
-                        display: flex;
-                        padding: 2px 0px;
-                        justify-content: center;
-                        align-items: center;
-                      " /></span></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+    <div class="bg-light p-4 rounded mx-auto" style="max-width: 600px;">
+        <form
+            action="https://gmail.us9.list-manage.com/subscribe/post?u=7d93a89bf0350632e20a10cfc&amp;id=cd3abcc979&amp;f_id=000556e1f0"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="validate"
+            target="_blank"
+            novalidate
+        >
+            <h2>Subscribe</h2>
+            <p><span class="text-danger">*</span> indicates required</p>
 
-        {% if messages %}
-        <ul class="list-group mt-4">
-            {% for message in messages %}
-            <li class="list-group-item bg-dark text-white {% if message.tags %} {{ message.tags }} {% endif %}">
-                {{ message }}
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+            <div class="mb-3">
+                <label for="mce-EMAIL">Email Address <span class="text-danger">*</span></label>
+                <input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" required>
+            </div>
+
+            <!-- Hidden anti-bot field -->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="b_7d93a89bf0350632e20a10cfc_cd3abcc979" tabindex="-1" value="">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" name="subscribe" class="btn btn-primary">Subscribe</button>
+            </div>
+        </form>
     </div>
+
+    {% if messages %}
+    <ul class="list-group mt-4">
+        {% for message in messages %}
+        <li class="list-group-item bg-dark text-white {% if message.tags %} {{ message.tags }} {% endif %}">
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </div>
-    {% endblock %}
+{% endblock %}
