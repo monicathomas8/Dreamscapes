@@ -5,7 +5,6 @@ body {
     height: 100%;
     margin: 0;
     background-image: url('/static/images/dreamland.jpg');
-    /* background: linear-gradient(to bottom, #1f1e49, #726cc7); */
     overflow-x: hidden;
     font-family:"Lexend", sans-serif;
 }
@@ -16,7 +15,7 @@ main {
 
 
 .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* dark shadow behind text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 
