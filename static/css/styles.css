@@ -1,7 +1,29 @@
 
 body {
-    background: linear-gradient(to bottom, #1f1e49, #726cc7)
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(to bottom, #1f1e49, #726cc7);
+    overflow-x: hidden;
+    font-family:"Lexend", sans-serif;
 }
+
+main {
+    flex: 1 0 auto;
+}
+
+
+/* .hero-overlay-box {
+    background-color: rgba(0, 0, 0, 0.753); 
+    padding: 30px;
+    border-radius: 12px;
+    color: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+} */
+
 
 .btn {
     background-color: #702c52;

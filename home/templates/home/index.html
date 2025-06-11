@@ -1,15 +1,20 @@
 {% extends "base.html" %}
+
 {% load static %}
+
 {% block title %}DreamScapes | Home{% endblock %}
 {% block content %}
     <main>
         <section class="index-hero">
-            <h2>Discover Stunning Digital Art</h2>
-            <p>Browse unique dream-like landscapes, images, and landmarks curated just for you.
-                <br>Explore the world of digital art and find your next favorite piece.</p>
-            <p>Our collection features Exclusive digital art inspired by nature’s magic.
-            <br></p>
-            <a href="{% url 'artwork-list' %}" class="btn">Explore Artworks</a>
+            <div class="hero-overlay-box">
+                <h2>Welcome to DreamScapes</h2>
+                <br>
+                <p>Browse unique dream-like landscapes, images, and landmarks curated just for you.
+                    <br>Explore the world of digital art and find your next favorite piece.</p>
+                <p>Our collection features Exclusive digital art inspired by nature’s magic.
+                <br></p>
+                <a href="{% url 'artwork-list' %}" class="btn">Explore Artworks</a>
+            </div>
         </section>
     </main>
 {% endblock %}
