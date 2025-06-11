@@ -39,22 +39,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <a href="{% url 'artwork-list' %}" class="nav-link">Artworks</a>
-                <a href="{% url 'contact-us' %}" class="nav-link">Contact Us</a>
-                <a href="{% url 'about' %}" class="nav-link">About Us</a>
-                <a href="{% url 'faq' %}" class="nav-link">FAQs</a>
-                <a href="{% url 'email-signup' %}" class="nav-link">Subscribe</a>
-                <a href="{% url 'create-custom-order' %}" class="nav-link">Custom Order</a>
+                <a href="{% url 'artwork-list' %}" class="nav-link" aria-label="View all artworks">Artworks</a>
+                <a href="{% url 'contact-us' %}" class="nav-link" aria-label="Contact DreamScapes">Contact Us</a>
+                <a href="{% url 'about' %}" class="nav-link" aria-label="Learn about DreamScapes">About Us</a>
+                <a href="{% url 'faq' %}" class="nav-link" aria-label="Frequently asked questions">FAQs</a>
+                <a href="{% url 'email-signup' %}" class="nav-link" aria-label="Subscribe to email updates">Subscribe</a>
+                <a href="{% url 'create-custom-order' %}" class="nav-link" aria-label="Create a custom artwork order">Custom Order</a>
                 {% if user.is_authenticated %}
-                <a href="#" class="nav-link">Welcome, {{ user.username }}</a>
-                <a href="{% url 'user-dashboard' %}" class="nav-link">Your Dashboard</a>
-                <a href="{% url 'update_profile' %}" class="nav-link">Update Account Details</a>
-                <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
+                <a href="#" class="nav-link" aria-label="Welcome message for {{ user.username }}">Welcome, {{ user.username }}</a>
+                <a href="{% url 'user-dashboard' %}" class="nav-link" aria-label="Go to your dashboard">Your Dashboard</a>
+                <a href="{% url 'update_profile' %}" class="nav-link" aria-label="Update your account details">Update Account Details</a>
+                <a href="{% url 'account_logout' %}" class="nav-link" aria-label="Log out of your account">Logout</a>
                 {% else %}
-                <a href="{% url 'account_login' %}" class="nav-link">Login</a>
-                <a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a>
+                <a href="{% url 'account_login' %}" class="nav-link" aria-label="Log in to your account">Login</a>
+                <a href="{% url 'account_signup' %}" class="nav-link" aria-label="Sign up for a new account">Sign Up</a>
                 {% endif %}
-                <a href="{% url 'cart-view' %}" class="nav-link">Cart</a>
+                <a href="{% url 'cart-view' %}" class="nav-link" aria-label="View your shopping cart">Cart</a>
+
               </div>
             </div>
           </div>
@@ -79,12 +80,13 @@
         <div class="row">
           <div class="col-md-6 text-start">
             <div class="d-flex flex-wrap justify-content-start">
-              <a href="{% url 'artwork-list' %}" class="text-white me-3">Artworks</a>
-              <a href="{% url 'faq' %}" class="text-white me-3">FAQs</a>
-              <a href="{% url 'contact-us' %}" class="text-white me-3">Contact Us</a>
-              <a href="{% url 'about' %}" class="text-white me-3">About Us</a>
-              <a href="{% url 'email-signup' %}" class="text-white me-3">Subscribe</a>
-              <a href="https://www.facebook.com/profile.php?id=61575786329518" target="_blank" class="text-white me-3">Facebook</a>
+              <a href="{% url 'artwork-list' %}" class="text-white me-3" aria-label="View all artworks">Artworks</a>
+              <a href="{% url 'faq' %}" class="text-white me-3" aria-label="Frequently asked questions">FAQs</a>
+              <a href="{% url 'contact-us' %}" class="text-white me-3" aria-label="Contact DreamScapes">Contact Us</a>
+              <a href="{% url 'about' %}" class="text-white me-3" aria-label="Learn about DreamScapes">About Us</a>
+              <a href="{% url 'email-signup' %}" class="text-white me-3" aria-label="Subscribe to email updates">Subscribe</a>
+              <a href="https://www.facebook.com/profile.php?id=61575786329518" target="_blank" class="text-white me-3" aria-label="Visit our Facebook page (opens in new tab)">Facebook</a>
+
             </div>
           </div>
           <div class="col-md-6 text-center">
