@@ -33,8 +33,21 @@ class CustomOrderForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field in self.fields.values():
+        placeholders = {
+            'description': 'Describe your custom art request...',
+            'size': 'e.g. A4, 30x40cm',
+            'colours': 'Preferred colours (e.g. blue, gold)',
+            'theme': 'e.g. Mountains at night',
+            'style': 'e.g. Minimalist, abstract',
+            'extra_suggestions': 'Any other ideas or inspirations',
+            'contact_email': 'Your email address',
+        }
+
+        for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['placeholder'] = (
+                placeholders.get(field_name, '')
+            )
 
 
 class UserUpdateForm(forms.ModelForm):
