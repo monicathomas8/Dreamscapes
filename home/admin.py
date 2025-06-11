@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import ArtistBio
+from .models import ArtistBio, ContactMessage
+
+admin.site.register(ContactMessage)
 
 
 @admin.register(ArtistBio)

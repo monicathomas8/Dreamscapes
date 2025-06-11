@@ -8,23 +8,13 @@
         We’d love to hear from you! Please fill out the form below:
     </p>
 
-    <form method="post" action="." class="bg-light p-4 rounded">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" id="name" name="name" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" id="email" name="email" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="message" class="form-label">Message:</label>
-            <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
-        </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
+   <form method="post" class="bg-light p-4 rounded">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
 </div>
 {% endblock %}

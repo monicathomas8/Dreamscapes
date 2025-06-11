@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import ArtistBio
-from .forms import ArtistBioForm
+from .forms import ArtistBioForm, ContactForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -13,10 +13,20 @@ def home(request):
 
 
 def contact_us(request):
-    """
-    Render the contact us page.
-    """
-    return render(request, 'home/contact_us.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request,
+                ("Thank you for your message! "
+                 "We'll be in touch soon.")
+            )
+            return redirect('contact-us')
+    else:
+        form = ContactForm()
+
+    return render(request, 'home/contact_us.html', {'form': form})
 
 
 def about(request):
