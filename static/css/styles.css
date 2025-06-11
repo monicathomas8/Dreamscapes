@@ -4,7 +4,8 @@ body {
     flex-direction: column;
     height: 100%;
     margin: 0;
-    background: linear-gradient(to bottom, #1f1e49, #726cc7);
+    background-image: url('/static/images/dreamland.jpg');
+    /* background: linear-gradient(to bottom, #1f1e49, #726cc7); */
     overflow-x: hidden;
     font-family:"Lexend", sans-serif;
 }
@@ -14,15 +15,10 @@ main {
 }
 
 
-/* .hero-overlay-box {
-    background-color: rgba(0, 0, 0, 0.753); 
-    padding: 30px;
-    border-radius: 12px;
-    color: #fff;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-} */
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* dark shadow behind text */
+}
+
 
 
 .btn {

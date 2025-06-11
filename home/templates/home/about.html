@@ -2,35 +2,36 @@
 {% load static %}
 {% block title %}About {% endblock %}
 {% block content %}
-<div class="container mt-5 text-white">
-    <h1 class="text-center mb-4">About DreamScapes</h1>
+<div class="container mt-5 ">
+    <div class= "text-dark">
+        <h1 class="text-center mb-4">About DreamScapes</h1>
 
-    <!-- Edit Bio Button for Artists -->
-    {% if user.is_authenticated and user.profile.is_artist %}
-        <div class="text-center">
-            <a href="{% url 'update-bio' %}" class="btn btn-primary mb-3">Edit Your Bio</a>
-        </div>
-    {% endif %}
+        <!-- Edit Bio Button for Artists -->
+        {% if user.is_authenticated and user.profile.is_artist %}
+            <div class="text-center">
+                <a href="{% url 'update-bio' %}" class="btn btn-primary mb-3">Edit Your Bio</a>
+            </div>
+        {% endif %}
 
-    <!-- Welcome Message -->
-    <p class="text-center">
-        Welcome to DreamScapes! Our art shop mission is to bring dream-like landscapes and landmarks to life through digital art. 
-        We are all about capturing landmarks and landscapes through digital creativity.
-        Have you seen our Facebook page? We regularly post updates and new artworks there.
-        <a href="https://www.facebook.com/profile.php?id=61575786329518" target="_blank" class="btn btn-secondary">Visit our Facebook Page</a>
-        <br>
+        <!-- Welcome Message -->
+        <p class="text-center">
+            Welcome to DreamScapes! Our art shop mission is to bring dream-like landscapes and landmarks to life through digital art. 
+            We are all about capturing landmarks and landscapes through digital creativity.
+            Have you seen our Facebook page? We regularly post updates and new artworks there.
+            <a href="https://www.facebook.com/profile.php?id=61575786329518" target="_blank" class="btn btn-secondary">Visit our Facebook Page</a>
+            <br>
 
-        We find endless inspiration in visiting the National Gallery in London. Wandering through its halls filled with masterpieces,
-        we connect with the timeless beauty of art and the stories it tells. The vibrant landscapes, intricate details,
-        and dream-like imagery spark our imagination and deepen our passion for creating digital works that echo the magic of these iconic creations.
-        It’s a place where creativity flourishes and dreams take shape. <a href="https://www.nationalgallery.org.uk/" target="_blank" class="btn btn-secondary">Visit the National Gallery</a>
+            We find endless inspiration in visiting the National Gallery in London. Wandering through its halls filled with masterpieces,
+            we connect with the timeless beauty of art and the stories it tells. The vibrant landscapes, intricate details,
+            and dream-like imagery spark our imagination and deepen our passion for creating digital works that echo the magic of these iconic creations.
+            It’s a place where creativity flourishes and dreams take shape. <a href="https://www.nationalgallery.org.uk/" target="_blank" class="btn btn-secondary">Visit the National Gallery</a>
 
-    </p>
-    <p class="text-center">
-        Feel free to explore our collection, and if you have any questions, don't hesitate to <a href="{% url 'contact-us' %}" class="btn">Contact Us</a>
-      
-    </p>
-
+        </p>
+        <p class="text-center">
+            Feel free to explore our collection, and if you have any questions, don't hesitate to <a href="{% url 'contact-us' %}" class="btn">Contact Us</a>
+        
+        </p>
+    </div>
     <!-- Artist Bio Section -->
     <div class="card bg-light mt-5">
         <div class="card-body">
@@ -52,10 +53,12 @@
     </div>
 
     <!-- Why DreamScapes Section -->
-    <h2 class="text-center mt-5 mb-4">Why DreamScapes?</h2>
-    <p class="text-center">
-        We are passionate about blending creativity with technology to create captivating visual experiences.
-    </p>
-    <p class="text-center">Thank you for visiting!</p>
+    <div class="text-white text-shadow">
+        <h2 class="text-center mt-5 mb-4">Why DreamScapes?</h2>
+        <p class="text-center">
+            We are passionate about blending creativity with technology to create captivating visual experiences.
+        </p>
+        <p class="text-center">Thank you for visiting!</p>
+    </div>
 </div>
 {% endblock %}
