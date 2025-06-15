@@ -6,8 +6,8 @@ A unique platform blending art and technology to bring dream-like landscapes to 
 
 The platform focuses on simplicity, responsiveness, and user-friendly navigation to cater to art lovers looking for elegant and customizable artwork.
 
-- 🎨 **Live Site**: [DreamScapes on Heroku](https://dreamscapes-4bf65f774d22.herokuapp.com/)  
-- 💳 **Test Card**: Use `4242 4242 4242 4242` with any valid expiry and CVC for test purchases (Stripe sandbox mode).
+- **Live Site**: [DreamScapes on Heroku](https://dreamscapes-4bf65f774d22.herokuapp.com/)  
+- **Test Card**: Use `4242 4242 4242 4242` with any valid expiry and CVC for test purchases (Stripe sandbox mode).
  
 
 ![website](static/images/allscreens.png)
@@ -243,7 +243,7 @@ PEP8
 CSS
 ![CSS](static/images/css.png)
 Lighthouse
-![lighthouse](static/images/lighthouse.png)
+![lighthouse](static/images/lighthouse2.png)
 HTML
 ![HTML](static/images/artwork.detail.png)
 
