@@ -28,8 +28,9 @@ The platform focuses on simplicity, responsiveness, and user-friendly navigation
 
 ### 1. Wireframes
 - Wireframes were created to map out the structure and flow of the website before development.
-- **Tool used:** Balsamiq  
+- **Tool used:** Balsamiq and hand drawn ideas
 ![Wireframe Mock-up](static/images/wireframe.png)
+More wireframes can be seen in the [`Wireframes Documentation`](WIREFRAMES.md).
 
 ### 2. Design
 - The site design was built using **Bootstrap** for responsive layout and grid system.
