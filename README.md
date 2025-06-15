@@ -37,7 +37,7 @@ More wireframes can be seen in the [`Wireframes Documentation`](WIREFRAMES.md).
 - Custom styles were added via CSS to give the site a unique, artistic aesthetic.
 - **Background image inspiration:**  
 [Bed in the Clouds – Pexels](https://www.pexels.com/photo/bed-in-the-clouds-11643390/)
-- Artwork images was created by me using AI. 
+- All artwork images and favicon were created by me using AI-based tools and then curated for style, theme, and originality to fit the DreamScapes vision.
 
 ### 3. Lucid Board
 - User journeys and workflows were mapped out using **Lucidchart**.
