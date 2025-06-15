@@ -1,440 +1,326 @@
-# DreamScapes E-commerce Platform
+# DreamScapes E-commerce Platform  
 A unique platform blending art and technology to bring dream-like landscapes to life.
 
-## About
-DreamScapes is an e-commerce platform designed to offer unique, unframed A4 art prints inspired by dream-like landscapes. The project integrates technical functionality with artistic creativity to deliver a seamless shopping experience.
-live site is here: [DreamScapes](https://dreamscapes-4bf65f774d22.herokuapp.com/)
+## About  
+**DreamScapes** is a visually captivating e-commerce platform offering unframed A4 art prints inspired by surreal, dream-like landscapes. Designed to merge artistic expression with modern web functionality, the site provides users with a smooth, aesthetically pleasing shopping experience.
 
-To test use card: 4242 4242 4242 4242 
+The platform focuses on simplicity, responsiveness, and user-friendly navigation to cater to art lovers looking for elegant and customizable artwork.
 
-![website](static/images/screens.png)
+- 🎨 **Live Site**: [DreamScapes on Heroku](https://dreamscapes-4bf65f774d22.herokuapp.com/)  
+- 💳 **Test Card**: Use `4242 4242 4242 4242` with any valid expiry and CVC for test purchases (Stripe sandbox mode).
+ 
+
+![website](static/images/allscreens.png)
 
 ## User Experience Design
 
 ### 1. Strategy
-- Focused on simplicity, accessibility, and aesthetic appeal to ensure a smooth user experience.
-- Designed to align with the needs of art enthusiasts seeking high-quality, customizable art.
+- Prioritized **simplicity**, **accessibility**, and **visual appeal** to create an intuitive and enjoyable user experience.
+- Designed to meet the needs of users seeking **high-quality**, **customizable** digital art prints.
+- Emphasized fast navigation, clear call-to-action buttons, and a clutter-free interface to reduce friction during browsing and checkout.
 
 ### 2. Target Audience
-- Art enthusiasts in the UK.
-- Customers who prefer clean, simple designs and personalized options.
-
----
+- **Art enthusiasts** and interior decor lovers within the **United Kingdom**.
+- Users who appreciate **clean, minimalist design** with the option to **personalize** or request **custom artwork**.
+- Customers interested in supporting unique and exclusive art collections.
 
 ## Planning
 
 ### 1. Wireframes
-- Wireframes created to map out the structure and flow of the website.
-- Tools used: Balsamiq
-![wireframe mock up](static/images/wireframe.png)
+- Wireframes were created to map out the structure and flow of the website before development.
+- **Tool used:** Balsamiq  
+![Wireframe Mock-up](static/images/wireframe.png)
 
 ### 2. Design
-- Designed using Bootstrap for responsiveness and cohesive layout. Finished with a personal style CSS.
+- The site design was built using **Bootstrap** for responsive layout and grid system.
+- Custom styles were added via CSS to give the site a unique, artistic aesthetic.
+- **Background image inspiration:**  
+[Bed in the Clouds – Pexels](https://www.pexels.com/photo/bed-in-the-clouds-11643390/)
+- Artwork images was created by me using AI. 
 
 ### 3. Lucid Board
-- Utilized Lucidchart to visualize user journeys and workflows.
-![planning](static/images/luicd.png)
----
+- User journeys and workflows were mapped out using **Lucidchart**.
+![Planning](static/images/luicd.png)
+
 
 ## Business Model
-DreamScapes operates with a robust and customer-centric business model designed to provide value through artistic excellence, seamless functionality, and strong brand engagement. Here's a detailed breakdown:
-1. Revenue Streams
-DreamScapes generates revenue through multiple channels:
-2.  Direct Art Sales: Selling high-quality A4-sized prints of dream-like landscapes and symbolic pieces. Each artwork is unframed, ensuring affordability and easy customization for the buyer.
-3.  Custom Orders: Offering personalized orders where customers can request specific dimensions, themes, or designs. This premium service adds an exclusive touch and caters to unique customer needs.
-4. Future Opportunities:- Premium pricing for framed artwork options.
-5. Expanding into digital downloads for artwork that can be printed at home.
 
-- **Web Marketing:** 
-SEO optimization, email campaigns via Mailchimp, and targeted social media presence to increase visibility and engagement.
-FaceBook Page
-![Facebook Page](static/images/faceboopage.png)
-MAilChimp Sign Up 
-![mailchimp](static/images/mailchimp.png)
----
+DreamScapes is an independent digital art platform that combines creativity and commerce. The business model is built around offering exclusive, dream-inspired artwork in both ready-to-purchase and customizable formats. The goal is to deliver high-quality visual pieces while maintaining accessibility and a personal customer experience.
+
+### 1. Core Offerings
+
+- **Art Print Sales:**  
+  Customers can browse and purchase unframed A4 prints of dream-like digital artworks. These prints are carefully curated for aesthetic appeal, aligning with interior design trends and customer demand for unique visual pieces.
+
+- **Custom Art Orders:**  
+  Through a dedicated custom order form, users can request bespoke artwork tailored to their preferred size, theme, color palette, and style. This offering adds a personalized, premium dimension to the platform and is aimed at customers seeking one-of-a-kind decor or gifts.
+
+### 2. Revenue Streams
+
+- **Direct Sales:**  
+  Revenue is generated through standard purchases of artwork displayed on the site.
+
+- **Custom Orders (Premium Pricing):**  
+  These are priced higher to reflect the time, creative effort, and consultation involved in producing bespoke pieces.
+
+- **Future Opportunities:**
+  - **Framed Prints:** Offering customers the option to purchase prints with frames, adding a convenient upsell opportunity.
+  - **Digital Downloads:** Selling downloadable high-resolution art for customers who prefer to print at home.
+  - **Merchandising:** In future, expanding into branded merchandise such as calendars, notebooks, and postcards featuring popular artwork.
+
+### 3. Marketing and Customer Acquisition
+
+DreamScapes aims to grow its audience through strategic digital marketing:
+
+- **Search Engine Optimization (SEO):**  
+  Web pages and product listings are optimized for search visibility, targeting keywords related to digital art, custom prints, and dream-inspired decor.
+
+- **Email Marketing with Mailchimp:**  
+  Visitors can subscribe to receive updates, special offers, and product launches via a sign-up form.  
+  ![Mailchimp](static/images/subsc.png)
+
+- **Social Media (Facebook):**  
+  A Facebook page helps build an engaged art-loving community, share new artwork, and drive targeted traffic to the store.  
+  ![Facebook Page](static/images/faceboopage.png)
+
+- **Word of Mouth & Referrals:**  
+  Positive customer experiences and visually appealing products are likely to lead to referrals and organic growth.
+
+### 4. Value Proposition
+
+DreamScapes offers:
+
+- Affordable access to exclusive digital art.
+- A user-friendly website for exploring and ordering art.
+- A personalized experience through the custom order process.
+- Transparent, secure checkout and delivery process.
+- Aesthetic consistency and modern UI design across all touchpoints.
 
 ## Technologies Used
 
 ### 1. Languages
-- Python, HTML, CSS, JavaScript
+- **Python** – Back-end logic and data handling
+- **HTML** – Markup structure for the web pages
+- **CSS** – Styling and layout
+- **JavaScript** – Interactive functionality (e.g., Stripe payments)
 
 ### 2. Frameworks and Libraries
-- Django, Bootstrap
+- **Django** – Python-based web framework for building the back end
+- **Bootstrap** – Responsive front-end design and layout
 
 ### 3. Databases
-- SQLite, PostgreSQL
+- **SQLite** – Used during local development
+- **PostgreSQL** – Used in production on Heroku
 
-### 4. Other Tools
-- Stripe for payment integration
-- Cloudinary for media storage
-- Heroku and GitHub for hosting
+### 4. Integrations and Services
+- **Stripe** – Secure payment processing
+- **Cloudinary** – Image and media hosting/storage
+- **Mailchimp** – Newsletter and user signup integration
 
-## 4. Other Tools
-- Heroku (Deployment)
-- GitPod (Development environment)
-- GitHub (Version control)
-- W3C Validator (HTML and CSS validation)
-- PEP8 (Python code validation)
-- Favicon.io  [Favicon Generator](https://favicon.io/)
----
+### 5. Development and Deployment Tools
+- **Heroku** – Hosting and deployment
+- **GitPod** – Cloud-based development environment
+- **GitHub** – Version control and code repository
+- **W3C Validator** – HTML and CSS code validation
+- **PEP8** – Python style guide used for code validation
+- **Favicon.io** – Tool used to generate the site’s favicon ([Favicon Generator](https://favicon.io/))
+
 ## Features
 
 ### 1. Design
-- A streamlined, visually appealing user interface with artistic touches.
 
-**Landing Page**
-![DreamScapes Home Page](static/images/homepage.png)
+DreamScapes features a clean, user-friendly interface that balances modern aesthetics with artistic flair. The layout is intuitive, making it easy for users to browse and navigate the platform, while subtle visual effects and themed elements reinforce the brand's artistic identity.
 
-**Art Shop**: A grid display of availabile.
-![Art Shopp Page](static/images/artshop.png)
+#### Key Pages
 
- **Art Detail**: A page that loads the full artwork with more detils.
-![Art detail Page](static/images/artdetail.png)
+- **Landing Page**  
+  A visually impactful homepage introducing the brand and inviting users to explore the art collection.  
+  ![DreamScapes Home Page](static/images/indexSC.png)
 
- **FAQs**: An FAQs page to help shoppers. 
-![Art detail Page](static/images/faqs.png)
+- **Art Shop**  
+  A gallery-style grid showcasing available A4-sized artworks. Each item includes a title, price, and quick access to detail pages.  
+  ![Art Shop Page](static/images/artworklistSC.png)
 
-- **Responsive Design**: Fully responsive for an optimal experience across devices. These include:
+- **Art Detail Page**  
+  A dedicated view of each artwork with a larger image, description, and an add-to-cart option.  
+  ![Art Detail Page](static/images/artworkdetailSC.png)
 
-   1. Navbav - adaptive for different screen sizes, with a toogle button and dropdown menu.
-    ![Navbar dropdown menu](static/images/navbar.png)
-   2. Footer with social links. 
-   ![footer ](static/images/footer.png)
-   3. Pop up messages
-   ![pop up message](static/images/popup.png)
- 
+- **FAQs Page**  
+  A help section answering common customer questions related to orders, delivery, and customization.  
+  ![FAQs Page](static/images/faqsc.png)
+
+#### Responsive Design
+
+The entire site is built using Bootstrap to ensure responsiveness across all devices, from desktop to mobile. Key responsive elements include:
+
+1. **Navbar**  
+   A collapsible navigation bar with a toggle button and dropdown menu for small screens.  
+   ![Navbar Dropdown Menu](static/images/navbar.png)
+
+2. **Footer**  
+   Includes quick links to important pages and a Facebook link, laid out in a grid for consistent display.  
+   ![Footer](static/images/footer.png)
+
+3. **Pop-up Messages**  
+   Flash messages are styled for visibility and include close buttons to dismiss them.  
+   ![Pop-up Message](static/images/popupmessageSC.png)
+
 ### 2. Colour Scheme
-- Calming blues and purples to evoke serenity.
+
+The site uses calming shades of blue and purple, chosen to evoke a dreamy and peaceful aesthetic that aligns with the brand’s theme.
 
 ### 3. Imagery
-- Dream-like landscapes and unframed A4 art prints. All Images were personally created. 
 
----
+Every piece of artwork on the platform was custom-created to reflect dream-like environments. The use of original imagery ensures uniqueness and exclusivity for customers. All prints are presented in A4 size and are sold unframed for flexible display options.
 
-## Information Architecture
+# Information Architecture
 
-### Project Structure
-<pre>
+## Project Structure
+
+```bash
 DreamScapes/
-├── dreamscapes/         # Project
-├── home/                # Home app (landing page, FAQ, contact form)
-├── artworks/            # Artworks app (browse, search, and view artwork)
-├── orders/              # Orders app (place, view, and manage orders)
-├── users/               # Users app (authentication and profile management)
+├── dreamscapes/         # Project configuration
+├── home/                # Landing page, FAQs, contact form
+├── artworks/            # Display, detail, and filtering of art
+├── orders/              # Cart, checkout, and order processing
+├── users/               # Authentication and profile management
 ├── templates/           # HTML templates
-├── static/              # CSS, JavaScript, and images
-├── media/               # Uploaded images (artwork previews)
-├── manage.py            # Django management script
-├── db.sqlite3           # SQLite database (development)
+├── static/              # CSS, JavaScript, images
+├── media/               # Uploaded artwork
+├── manage.py            # Django management tool
+├── db.sqlite3           # Development database
 └── requirements.txt     # Project dependencies
-</pre>
+```
 
-###  Database
-- A well-structured database to store user, order, and artwork information.
+## Database Design
 
-### Entity-Relationship Diagrams
-please note; some modifactions were made during the development process. 
+A well-structured relational database is implemented using Django models to store and manage user accounts, custom orders, artworks, and transactions.
 
-#### 1. User Model (Users App)
-Represents the users of the site, including admins and customers.
+Models follow Django conventions and make use of **relational fields** to maintain data integrity.
 
-**Fields**:
-- `username (CharField)` – Unique identifier.
-- `email (EmailField)` – Contact information.
-- `password (CharField)` – For authentication.
-- `role (CharField)` – Either "admin" or "customer."
+## Entity Relationship Diagram (ERD)
 
-**Relationships**:
-- **One-to-Many**: Each user can have multiple custom orders.
-
----
-
-#### 2. Custom Order Model (Users App)
-Stores details of personalized artwork requests submitted by users.
-
-**Fields**:
-- `user (ForeignKey to User)` – Links the order to the user who made it.
-- `details (TextField)` – Customization instructions.
-- `price (DecimalField)` – Cost of the custom work.
-- `status (CharField)` – Tracks progress: "Pending", "In Progress", or "Completed."
-
-**Relationships**:
-- **ForeignKey**: Each custom order belongs to one user.
-
----
-
-#### 3. Artwork Model (Artwork App)
-Represents individual artworks for sale.
-
-**Fields**:
-- `title (CharField)` – Artwork name.
-- `description (TextField)` – Details about the piece.
-- `price (DecimalField)` – Selling price.
-- `image (ImageField)` – Artwork file upload.
-- `artist (ForeignKey to Artist)` – Links to the artist profile.
-
-**Relationships**:
-- **ForeignKey**: Each artwork is associated with one artist.
-
----
-
-#### 4. Artist Model (Core App)
-Represents contributing artists and their bios.
-
-**Fields**:
-- `name (CharField)` – Artist’s full name.
-- `bio (TextField)` – Description or profile.
-- `website (URLField)` - Optional portfolio link.
-
----
-
-#### 5. Order Model (Orders App)
-Handles shopping cart and purchases.
-
-**Fields**:
-- `user (ForeignKey to User)` – Connects the order to the buyer.
-- `artwork (ManyToManyField to Artwork)` – Stores multiple items in the order.
-- `status (CharField)` – Payment status: "Pending" or "Completed."
-
-**Relationships**:
-- **Many-to-Many**: A single order can include multiple artworks
-
----
+Please follow here for the [`ERD.md`](ERD.md) file.
 
 ## Testing
 
+DreamScapes was tested thoroughly using a combination of manual testing, validator tools, test-driven development (TDD), and behavior-driven development (BDD) based on user stories.
+
 ### 1. Manual Testing
-| Feature          | Test Case                     | Status    |
-|------------------|-------------------------------|-----------|
-| Navbar Links     | Ensure all links navigate correctly | ✅ Passed |
-| Delivery Details | Save delivery info to order   | ✅ Passed |
-| Payment Processing | Verify Stripe integration   | ✅ Passed |
 
-### 2. BDD testing with user stories: 
-### User Stories and BDD Scenarios
+All core features were manually tested for correct behavior and usability. This included:
 
-#### **User Story 2: Viewing Artwork Details**
-**As a customer,**  
-I want to click on an artwork to see more details, including artist information and pricing.  
+- Navigation bar and footer links
+- Page responsiveness on different screen sizes
+- Form validation (login, signup, shipping, custom orders)
+- Flash messages (success/error feedback)
+- Stripe payment flow and order confirmation
 
-**Acceptance Criteria:**  
-1) Clicking on an artwork should open a detail page.  
-2) The detail page should display a high-quality image of the artwork.  
-3) The artist’s name and biography should be accessible.  
+Test cases and results are documented in the [`TESTING.md`](TESTING.md) file.
 
-**BDD Scenarios:**  
-- **Scenario 1:**  
-  *Given* the user is on the Shop page,  
-  *When* they click on an artwork,  
-  *Then* they should be redirected to the artwork’s detail page.  
+### 2. Test-Driven Development
 
-- **Scenario 2:**  
-  *Given* the user is on an artwork’s detail page,  
-  *When* they view the image section,  
-  *Then* they should see a high-resolution image of the artwork.  
+Key functionality was implemented using user stories with BDD-style acceptance criteria and scenarios. These included:
 
-- **Scenario 3:**  
-  *Given* the user is on an artwork’s detail page,  
-  *When* they scroll to the artist section,  
-  *Then* they should see the artist’s name and biography.  
+- Viewing artwork details  
+- Adding and removing items from the cart  
+- Submitting and managing custom artwork requests  
+- Completing a purchase with valid delivery and payment information  
+- Viewing past orders from the user dashboard
 
----
+Examples of user stories and corresponding BDD scenarios are also included in [`TESTING.md`](TESTING.md).
 
-#### **User Story 3: Adding Items to Cart**
-**As a customer,**  
-I want to add artwork to my shopping cart so that I can review my selections before checkout.  
+### 3. Validators
 
-**Acceptance Criteria:**  
-1) The user should see an "Add to Cart" button on artwork pages.  
-2) The user should be able to remove items from the cart.  
+All templates were passed through:
 
-**BDD Scenarios:**  
-- **Scenario 1:**  
-  *Given* the user is on the artwork detail page,  
-  *When* they click the "Add to Cart" button,  
-  *Then* the artwork should be added to their cart.  
+- [W3C HTML Validator](https://validator.w3.org/)
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+- Python code was validated with [PEP8](https://www.python.org/dev/peps/pep-0008/) via the flake8 tool.
 
-- **Scenario 2:**  
-  *Given* the user has items in their cart,  
-  *When* they click the "Remove" button next to an artwork,  
-  *Then* the artwork should be removed from the cart.  
-
----
-
-#### **User Story 4: Checking Out & Making Payments**
-**As a customer,**  
-I want to securely pay for my order so that I can receive my purchased artwork.  
-
-**Acceptance Criteria:**  
-1) The user should be able to review items before checkout.  
-2) The checkout page should display a breakdown of costs.  
-3) Payment options should include secure processing via Stripe.  
-4) The user should receive confirmation upon a successful transaction.  
-
-**BDD Scenarios:**  
-- **Scenario 1:**  
-  *Given* the user has items in their cart,  
-  *When* they navigate to the checkout page,  
-  *Then* they should see a list of all selected items.  
-
-- **Scenario 2:**  
-  *Given* the user is on the checkout page,  
-  *When* they review the summary section,  
-  *Then* they should see a breakdown of item costs, tax, and total.  
-
-- **Scenario 3:**  
-  *Given* the user is on the checkout page,  
-  *When* they enter their payment details,  
-  *Then* the payment should be securely processed.  
-
-- **Scenario 4:**  
-  *Given* the user has successfully paid,  
-  *When* the payment is confirmed,  
-  *Then* they should receive a confirmation message.  
-
----
-
-#### **User Story 5: Requesting Custom Artwork**
-**As a customer,**  
-I want to submit a request for custom artwork so that I can purchase personalized pieces.  
-
-**Acceptance Criteria:**  
-1) The user should be able to fill out a custom order request form.  
-2) The request should be stored for admin review.  
-3) Users should receive a confirmation after submission.  
-
-**BDD Scenarios:**  
-- **Scenario 1:**  
-  *Given* the user is on the custom order page,  
-  *When* they fill out the form,  
-  *Then* the form should accept all required details.  
-
-- **Scenario 2:**  
-  *Given* the user submits the request form,  
-  *When* the submission is processed,  
-  *Then* the order should be saved in the database.  
-
-- **Scenario 3:**  
-  *Given* the user has submitted the form,  
-  *When* the system processes the submission,  
-  *Then* they should see a confirmation message.  
-
----
-
-#### **User Story 6: Tracking Order History**
-**As a customer,**  
-I want to see a history of my orders so that I can review my past purchases.  
-
-**Acceptance Criteria:**  
-1) The user should access their order history from the dashboard.  
-2) Orders should include artwork details, purchase date, and status.  
-3) Users should be able to view the details of each past order.  
-
-**BDD Scenarios:**  
-- **Scenario 1:**  
-  *Given* the user is logged into their account,  
-  *When* they navigate to the dashboard,  
-  *Then* they should see a list of their previous orders.  
-
-- **Scenario 2:**  
-  *Given* the user is viewing their order history,  
-  *When* they review the order list,  
-  *Then* each order should show artwork details, purchase date, and status.  
-
-- **Scenario 3:**  
-  *Given* the user clicks on a specific order,  
-  *When* the order details page loads,  
-  *Then* they should see a detailed view of that order.  
-
----
-
-#### **User Story 7: Searching for Artwork**
-**As a user,**  
-I want to search for artwork using keywords so that I can find specific pieces quickly.  
-
-**Acceptance Criteria:**  
-1) The user should see a search bar on the Shop page and homepage.  
-2) Users can type keywords related to artwork titles or artist names.  
-3) The search results should display matching artworks dynamically.  
-4) If no matching artwork is found, an appropriate message should be shown.  
-
-**BDD Scenarios:**  
-- **Scenario: Searching for existing artwork**  
-  *Given* the user is on the Shop page,  
-  *When* they enter a valid artwork title in the search bar,  
-  *Then* the results should display artworks matching the keyword.  
-
-- **Scenario: Searching for an artist’s name**  
-  *Given* the user is on the Shop page,  
-  *When* they enter an artist’s name in the search bar,  
-  *Then* the results should display all artwork associated with that artist.  
-
-- **Scenario: No results found**  
-  *Given* the user is on the Shop page,  
-  *When* they enter a keyword that does not match any artwork or artist,  
-  *Then* the system should display a "No results found" message.  
-
-### 3. Validator Testing
-- HTML, CSS validation using W3C validators.
-- Python code validated with PEP8 standards.
-- Lighthouse
 PEP8
 ![PEP8](static/images/pep8.png)
 CSS
 ![CSS](static/images/css.png)
 Lighthouse
 ![lighthouse](static/images/lighthouse.png)
----
+HTML
+![HTML](static/images/artwork.detail.png)
 
-## Bugs
-- **Resolved:** Navbar alignment issue, delivery details not saving correctly.
-- **Unresolved:** 
+Please refer to the [`TESTING.md`](TESTING.md) for all html passes. 
 
----
+# Bugs & Fixes
+
+This section outlines bugs encountered during development and how they were resolved.
+
+| Bug ID | Description | Status | Fix |
+|--------|-------------|--------|-----|
+| 1 | **Navbar collapsing issue on smaller screens.** The hamburger icon appeared but links weren't visible. | ✅ Fixed | Added `navbar-toggler` and ensured correct `data-bs-*` attributes were in place. Verified with Bootstrap 5 docs. |
+| 2 | **Delivery details not saving correctly.** Form submitted but data wasn't stored. | ✅ Fixed | Reordered logic to save shipping details before Stripe intent was created. Confirmed correct form validation. |
+| 3 | **Background image not loading.** No visual update on home page despite styling. | ✅ Fixed | Realized `DEBUG` was `False` during development, preventing static files from updating. Switched it on to see changes. |
+| 4 | **Footer not sticking to bottom.** Footer floated mid-screen on short content pages. | ✅ Fixed | Used flexbox with `min-height: 100vh` and `flex-direction: column` on `body`, and `mt-auto` on the footer. |
+| 5 | **Cart not updating correctly.** Removing an item didn’t update the total price. | ✅ Fixed | Corrected cart logic in the view and ensured session was updated after item deletion. |
+| 6 | **Order Detail page causing 500 error.** Clicking an order broke the page. | ✅ Fixed | Caused by missing `artwork_detail` URL in loop link. Wrapped in an `if artwork` condition and fixed the template path. |
+| 7 | **404 page not connected.** Broken links redirected to default Django 404. | ✅ Fixed | Created a custom `404.html` template and updated `handler404` in `urls.py`. |
+| 8 | **Custom order form validation errors not displaying.** Users saw no feedback. | ✅ Fixed | Added `form.errors` block in template and used `{{ form.field.errors }}` per field. |
+| 9 | **Logged-out users accessing protected routes.** Users could manually enter profile URLs and access restricted pages. | ✅ Fixed | Added `@login_required` decorators and checks in views for authenticated users. |
+| 10 | **Stripe card element not rendering.** The form appeared blank on the checkout page. | ✅ Fixed | Script was loading before the DOM was ready. Moved Stripe script to bottom of page and ensured JS loaded after elements. |
+| 11| **Help text triggering ARIA validation errors.** `aria-describedby` pointed to non-existent IDs. | ✅ Fixed | Manually added matching `<small id="...">` elements below each input or removed the attribute where unused. |
+| 12 | **Profile update form not saving changes.** Users saw no errors but info didn’t change. | ✅ Fixed | Overwrote the `__init__()` method incorrectly. Updated logic to use `instance=request.user` properly in view. |
+| 13 | **Mobile menu overlapping page content.** Navbar dropdown remained open and obscured page content. | ✅ Fixed | Added `z-index` and closed mobile menu on link click using JavaScript. |
+| 14 | **New users couldn’t sign up.** Form submitted but account wasn’t created, and no error was shown. | ✅ Fixed | Added error handling and checked that the registration view was saving the user correctly. Ensured form used `UserCreationForm` and included required fields in `forms.py`. |
+| 15 | **Product images not displaying on deployed site.** Thumbnails broken on Heroku. | ✅ Fixed | Adjusted `Cloudinary` settings and ensured `MEDIA_URL` and `CloudinaryStorage` were correctly configured. |
 
 ## Deployment
 - This project was deployed locally first and then hosted on Heroku. Follow these steps to set up and deploy the project: [Deployment file](deployment.md)
 
----
-
 ## Future Enhancements
-- Introduce framed print options.
-- Add international shipping functionality.
-- Enhance artwork customization with live previews.
-- Implement advanced analytics to track user behavior.
-- and a watermark on images before buying. 
 
----
+- **Framed Print Options**: Offer customers the ability to select framing options at checkout.
+- **International Shipping**: Expand shipping beyond the UK to reach a global customer base.
+- **Live Artwork Customization Preview**: Allow users to see a visual mock-up of their custom order before submission.
+- **User Behavior Analytics**: Implement advanced tracking to monitor user interactions and optimize UX.
+- **Image Watermarking**: Apply watermarks to artwork previews to prevent unauthorized use prior to purchase.
+
 
 ## Summary
+
 DreamScapes is the result of a rewarding yet challenging journey, where technical precision met artistic expression to create a unique e-commerce platform. The project was shaped by tight time constraints and unforeseen hurdles, demanding creative problem-solving and adaptability throughout the process.
-Time Limitations:
+
+### Time Limitations
 Delivering a functional platform within a set timeframe required prioritizing essential features while scaling back or postponing certain enhancements. This approach ensured the project remained focused and achievable without compromising on user experience or core functionality.
-Overcoming Challenges:
-- Building DreamScapes involved tackling complex technical challenges:
-- Payment Integration: Stripe required meticulous debugging to guarantee secure and seamless transactions.
-- Responsive Design: Bootstrap styling necessitated iterative refinements to achieve consistent spacing and responsiveness.
-- Custom Artwork Functionality: Designing and implementing forms demanded careful database structuring and troubleshooting.
+
+### Overcoming Challenges
+Building DreamScapes involved tackling complex technical challenges:
+
+- **Payment Integration**: Stripe required meticulous debugging to guarantee secure and seamless transactions.
+- **Responsive Design**: Bootstrap styling necessitated iterative refinements to achieve consistent spacing and responsiveness.
+- **Custom Artwork Functionality**: Designing and implementing forms demanded careful database structuring and troubleshooting.
 
 Despite these obstacles, solutions often involved creative compromises, such as simplifying workflows, streamlining operations, and embracing innovative tools.
-Lessons Learned:
+
+### Lessons Learned
 The challenges faced during the project were opportunities for growth and skill enhancement. Learning to work within limitations fostered resourcefulness and efficiency, while tackling technical issues improved problem-solving skills and confidence.
+
 DreamScapes stands as a testament to the power of perseverance and passion. It not only serves as a platform for showcasing dream-like artwork but also reflects the dedication and creativity poured into its development. With future enhancements on the horizon, DreamScapes is ready to continue evolving and inspiring art lovers everywhere.
 
----
 ## Content
-- This project was designed and developed by **Monica Thomas** as part of the Code Institute Full-Stack Development Diploma.
+
+This project was designed and developed by **Monica Thomas** as part of the **Code Institute Full-Stack Development Diploma**.
 
 ## Credits
+
 DreamScapes was developed with the support of various tools, frameworks, and documentation that guided the implementation of essential features. Special thanks to the following resources:
-- Bootstrap Documentation: For providing detailed guidance on implementing responsive design and cohesive styling across the platform.
-- Stripe Documentation: For comprehensive instructions on integrating secure payment processing seamlessly into the checkout workflow.
-- Cloudinary Documentation: For facilitating efficient media storage and management, ensuring high-quality images are served throughout the site.
-- Tech With Tim: [Django Beginner Tutorial](https://youtu.be/sm1mokevMWk?si=x647nUCIvSpyD2lU)
-- Programming with Mosh: [Django Full Course](https://youtu.be/rHux0gMZ3Eg?si=SBKdrSZ061fcF1YV)  
+
+- [Bootstrap Documentation](https://getbootstrap.com/) – For providing detailed guidance on implementing responsive design and cohesive styling across the platform.
+- [Stripe Documentation](https://stripe.com/docs) – For comprehensive instructions on integrating secure payment processing seamlessly into the checkout workflow.
+- [Cloudinary Documentation](https://cloudinary.com/documentation) – For facilitating efficient media storage and management, ensuring high-quality images are served throughout the site.
+- [Tech With Tim – Django Beginner Tutorial](https://youtu.be/sm1mokevMWk?si=x647nUCIvSpyD2lU)
+- [Programming with Mosh – Django Full Course](https://youtu.be/rHux0gMZ3Eg?si=SBKdrSZ061fcF1YV)
 
 Additionally, the Django framework and its community resources played a crucial role in building the backend logic and overall structure of the platform. Tutorials, blogs, and mentors also provided valuable insights along the way.
 
-
 ## Acknowledgements
-- Special thanks to the Code Institute community and my mentor Iuliia Konovalova for support and guidance throughout this project.
+
+- Special thanks to the **Code Institute** community for continuous encouragement and support.
+- Grateful appreciation to my mentor **Iuliia Konovalova** for her insightful feedback, expert guidance, and motivation throughout the development of this project.
