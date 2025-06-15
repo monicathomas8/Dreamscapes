@@ -15,36 +15,57 @@
                 <div class="mb-3">
                     <label for="id_description" class="form-label">Description</label>
                     {{ form.description }}
+                    <small id="id_description_helptext" class="form-text text-muted">
+                        Describe your custom art request.
+                    </small>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_size" class="form-label">Size</label>
                     {{ form.size }}
+                    <small id="id_size_helptext" class="form-text text-muted">
+                        Preferred size (e.g. A4, 30x40cm).
+                    </small>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_colours" class="form-label">Preferred Colours</label>
                     {{ form.colours }}
+                    <small id="id_colours_helptext" class="form-text text-muted">
+                        List colours you’d like featured (e.g. blue, gold).
+                    </small>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_theme" class="form-label">Theme</label>
                     {{ form.theme }}
+                    <small id="id_theme_helptext" class="form-text text-muted">
+                        Specify a theme (e.g. fantasy, nature).
+                    </small>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_style" class="form-label">Style</label>
                     {{ form.style }}
+                    <small id="id_style_helptext" class="form-text text-muted">
+                        Choose a style (e.g. realism, abstract).
+                    </small>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_extra_suggestions" class="form-label">Extra Suggestions</label>
                     {{ form.extra_suggestions }}
+                    <small id="id_extra_suggestions_helptext" class="form-text text-muted">
+                        Any additional ideas or requests.
+                    </small>
                 </div>
 
                 <div class="mb-3">
                     <label for="id_contact_email" class="form-label">Contact Email</label>
                     {{ form.contact_email }}
+                    <small id="id_contact_email_helptext" class="form-text text-muted">
+                        Your email for updates and confirmation.
+                    </small>
                 </div>
 
                 <div class="d-grid">

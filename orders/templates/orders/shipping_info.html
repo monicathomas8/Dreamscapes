@@ -4,34 +4,35 @@
 {% block title %}Shipping Information{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1 class="text-center mb-4 text-white">Shipping Details</h1>
-    <p class="text-center mb-4 text-white">
-        Please enter your shipping information to proceed with your order.
-    </p>
+        <div class="container mt-5">
+            <h1 class="text-center mb-4 text-white">Shipping Details</h1>
+            <p class="text-center mb-4 text-white">
+                Please enter your shipping information to proceed with your order.
+            </p>
 
-    <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <form method="post" class="bg-light form-styled p-4 rounded">
-                {% csrf_token %}
-                {% for field in form %}
-                    <div class="mb-3">
-                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}:</label>
-                        {{ field }}
-                        {% if field.errors %}
-                            <div class="text-danger small">
-                                {{ field.errors|striptags }}
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form method="post" class="bg-light form-styled p-4 rounded">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="mb-3">
+                                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}:</label>
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <div class="text-danger small">
+                                            {{ field.errors|striptags }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Continue to Payment</button>
                             </div>
-                        {% endif %}
+                        </form>
                     </div>
-                {% endfor %}
-                <div class="text-center">
-                    <button type="submit" class="btn btn-success">Continue to Payment</button>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
 
 {% endblock %}
